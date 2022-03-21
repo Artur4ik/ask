@@ -1,0 +1,17 @@
+<h1>Добавить новый вопрос</h1>
+<%=form_for :post, url: questions_path do |f|%>
+  <p>
+    Ваш номер пользователя:<br> <%= f.text_field :user_id%>
+  </p>
+  <p>
+    Текст вопроса:<br> <%= f.text_area :body%>
+  </p>
+
+  <p>
+  <%=f.submit
+     submit_tag "Добавить"
+  %>
+  </p>
+
+<% end %>
+<h2><%=link_to "Вернуться ко всем вопросам", questions_path %></h2>
