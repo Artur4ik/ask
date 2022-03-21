@@ -1,13 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Askme</title>
+    <title>Вопросы</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <table border="2">
+      <tr>
+        <td><%= image_tag("question.png") %></td>
+        <td><font size="6">Вопросы - лучший сайт для удовлетворения интеллектуального голода</font></td>
+      </tr>
+    </table>
+    <%if user_signed_in? %>
+      <table>
+        <tr>
+          <td>Выполнен вход: <%=current_user.email%></td>
+          <td><%=button_to "Выйти", destroy_user_session_path, method: :delete%></td>
+        </tr>
+      </table>
+    <%else %>
+      <table>
+        <tr>
+          <td>Вы не авторизированы.</td>
+          <td><%=button_to "Войти", new_user_session_path, method: :get%></td>
+          <td><%=button_to "Регистрация", new_user_registration_path, method: :get%></td>
+        </tr>
+      </table>
+    <%end %>
+    <hr color="green">
   </head>
 
   <body>
