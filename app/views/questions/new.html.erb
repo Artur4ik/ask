@@ -1,17 +1,20 @@
 <h1>Добавить новый вопрос</h1>
-<%=form_for :post, url: questions_path do |f|%>
-  <p>
-    Ваш номер пользователя:<br> <%= f.text_field :user_id%>
-  </p>
-  <p>
-    Текст вопроса:<br> <%= f.text_area :body%>
-  </p>
+<%if user_signed_in? %>
+  <%=form_for :post, url: questions_path do |f|%>
+    <p>Имя пользователя: <%=current_user.email%> (№<%=current_user.id%>)</P>
+    <p>
+      Текст вопроса:<br> <%=f.text_area :body%>
+    </p>
 
-  <p>
-  <%=f.submit
-     submit_tag "Добавить"
-  %>
-  </p>
+    <p>
+      <%=f.submit
+         submit_tag "Добавить"
+      %>
+    </p>
 
+  <% end %>
+<% else %>
+  <h2>Для добавления вопросов необходимо авторизироваться.</h2>
 <% end %>
+<hr color="green">
 <h2><%=link_to "Вернуться ко всем вопросам", questions_path %></h2>

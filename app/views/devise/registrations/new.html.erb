@@ -1,0 +1,32 @@
+<h2>Регистрация нового пользователя</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <p></p>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> символов МИНИМУМ)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+    <p></p>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <p></p>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Зарегистрироваться" %>
+  </div>
+<% end %>
+<hr color="green">
+<h2><%=link_to "Вернуться ко всем вопросам", questions_path %></h2>

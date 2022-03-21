@@ -1,0 +1,18 @@
+<h2>Восстановление пароля</h2>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <p></p>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Восстановить пароль" %>
+  </div>
+<% end %>
+
+<hr color="green">
+<h2><%=link_to "Вернуться ко всем вопросам", questions_path %></h2>

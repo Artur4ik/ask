@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
   def create
     Question.create(
       body:params[:post][:body],
-      user_id:params[:post][:user_id]
+      user_id:current_user.id
     )
     redirect_to questions_path
   end
