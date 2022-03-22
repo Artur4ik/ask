@@ -5,7 +5,7 @@
       <%else %>
     <td><%= image_tag("ok.png") %></td>
     <%end %>
-<td><h3>Вопрос №<%=@q.id%> от <%=User.find(@q.user_id).email%></h3></td>
+<td><h3>Вопрос №<%=@q.id%> от <%=link_to User.find(@q.user_id).email, "/users/#{User.find(@q.user_id).id}"%></h3></td>
   </tr>
 </table>
 <%=@q.body%>
@@ -15,7 +15,7 @@
   <table>
   <tr>
       <td><%= image_tag("ok.png") %></td>
-    <td><h3>Ответ от <%=User.find(@q.answer_user_id).email%></h3></td>
+    <td><h3>Ответ от <%=link_to User.find(@q.answer_user_id).email, "/users/#{User.find(@q.answer_user_id).id}"%></h3></td>
   </tr>
   </table>
 

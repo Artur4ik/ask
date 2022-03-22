@@ -23,6 +23,9 @@ class QuestionsController < ApplicationController
   def show
     @q = Question.find(params[:id])
   end
+  def user
+    @q = Question.where(user_id:params[:id])
+  end
   def destroy
     @q = Question.find(params[:id])
     @q.destroy

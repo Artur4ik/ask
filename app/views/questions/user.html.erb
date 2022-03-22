@@ -1,0 +1,49 @@
+<%if user_signed_in? %>
+<%unless (User.find(params[:id]).email == current_user.email)%>
+<table>
+  <tr>
+    <td><%= image_tag("autorisated.png") %></td>
+    <td><h3>Пользователь: <%=User.find(params[:id]).email%>, id:(<%=params[:id]%>)</h3></td>
+    <td><%= image_tag("ok.png") %></td>
+    <td><h3>Зарегистрирован: <%=User.find(params[:id]).created_at%></h3></td>
+  </tr>
+</table>
+<h3>Вопросы, заданные пользователем:</h3>
+  <hr color="green">
+<%end%>
+<%else%>
+  <table>
+    <tr>
+      <td><%= image_tag("autorisated.png") %></td>
+      <td><h3>Пользователь: <%=User.find(params[:id]).email%>, id:(<%=params[:id]%>)</h3></td>
+      <td><%= image_tag("ok.png") %></td>
+      <td><h3>Зарегистрирован: <%=User.find(params[:id]).created_at%></h3></td>
+    </tr>
+  </table>
+  <h3>Вопросы, заданные пользователем:</h3>
+  <hr color="green">
+<%end%>
+
+<% unless @q.count == 0
+     @q.each do |i|
+%>
+
+    <table>
+      <tr>
+        <%if (i.answer_user_id ==-1)%>
+          <td><%= image_tag("cancel.png") %></td>
+        <%else %>
+          <td><%= image_tag("ok.png") %></td>
+        <%end %>
+        <td><h3><%=link_to "Вопрос №#{i.id}", question_path(i.id)%> от <%=User.find(i.user_id).email%></h3></td>
+      </tr>
+    </table>
+    <%=i.body%>
+    <p>Создан: <%=i.created_at%></p>
+    <hr color="green">
+  <%end%>
+<%else%>
+  <h2>Нет вопросов</h2>
+  <hr color="green">
+<%end %>
+<h2><%=link_to "Вернуться ко всем вопросам", questions_path%></h2>

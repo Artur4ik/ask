@@ -20,6 +20,7 @@
         <tr>
           <td><%= image_tag("autorisated.png") %></td>
           <td>Выполнен вход: <%=current_user.email%></font></td>
+          <td><%=button_to "Мои вопросы", "/users/#{current_user.id}", method: :get%></td>
           <td><%=button_to "Выйти", destroy_user_session_path, method: :delete%></td>
         </tr>
       </table>
