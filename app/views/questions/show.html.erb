@@ -5,7 +5,7 @@
       <%else %>
     <td><%= image_tag("ok.png") %></td>
     <%end %>
-<td><h3>Вопрос № <%=@q.id%> от <%=User.find(@q.user_id).email%></h3></td>
+<td><h3>Вопрос №<%=@q.id%> от <%=User.find(@q.user_id).email%></h3></td>
   </tr>
 </table>
 <%=@q.body%>

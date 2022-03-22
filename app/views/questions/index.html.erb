@@ -8,7 +8,7 @@
         <%else %>
           <td><%= image_tag("ok.png") %></td>
         <%end %>
-        <td><h3><%=link_to "Вопрос №#{i.id}", "/questions/#{i.id}" %>, пользователь: <%=User.find(i.user_id).email%></h3></td>
+        <td><h3><%=link_to "Вопрос №#{i.id}", question_path(i.id)%> от <%=User.find(i.user_id).email%></h3></td>
       </tr>
     </table>
 <%=i.body%>
