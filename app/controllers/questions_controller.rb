@@ -1,9 +1,9 @@
 class QuestionsController < ApplicationController
   skip_before_action :verify_authenticity_token
   def create
-    Question.create(
+    @q = Question.create(
       body:params[:post][:body],
-      user_id:current_user.id
+      user_id:params[:post][:user_id]
     )
     redirect_to questions_path
   end

@@ -1,6 +1,10 @@
-<h1>Вопрос № <%=@q.id%>, пользователь: <%=@q.user_id%></h1>
+<h1>Вопрос № <%=@q.id%> от <%=User.find(@q.user_id).email%></h1>
 <h3><%=@q.body%></h3>
 <h3>Создан: <%=@q.created_at%></h3>
+<%if user_signed_in? %>
+<%if(User.find(@q.user_id).id == current_user.id)%>
 <%=button_to "Удалить вопрос", question_path(@q.id), method: :delete%>
+<%end %>
+<%end %>
 <hr color="green">
 <h2><%=link_to "Вернуться ко всем вопросам", questions_path%></h2>

@@ -1,6 +1,7 @@
 <% unless @q.count == 0
-  @q.each do |i|%>
-<h3><%=link_to "Вопрос №#{i.id}", "/questions/#{i.id}" %>, пользователь: <%=i.user_id%></h3>
+  @q.each do |i|
+%>
+<h3><%=link_to "Вопрос №#{i.id}", "/questions/#{i.id}" %>, пользователь: <%=User.find(i.user_id).email%></h3>
 <h3><%=i.body%></h3>
 <h3>Создан: <%=i.created_at%></h3>
 <hr color="green">
