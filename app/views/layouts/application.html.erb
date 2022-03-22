@@ -18,13 +18,15 @@
     <%if user_signed_in? %>
       <table>
         <tr>
-          <td>Выполнен вход: <%=current_user.email%></td>
+          <td><%= image_tag("autorisated.png") %></td>
+          <td>Выполнен вход: <%=current_user.email%></font></td>
           <td><%=button_to "Выйти", destroy_user_session_path, method: :delete%></td>
         </tr>
       </table>
     <%else %>
       <table>
         <tr>
+          <td><%= image_tag("cancel.png") %></td>
           <td>Вы не авторизированы.</td>
           <td><%=button_to "Войти", new_user_session_path, method: :get%></td>
           <td><%=button_to "Регистрация", new_user_registration_path, method: :get%></td>

@@ -1,10 +1,25 @@
-<h3>Вопрос № <%=@q.id%> от <%=User.find(@q.user_id).email%></h3>
-<p><%=@q.body%></p>
+<table>
+  <tr>
+    <%if (@q.answer_user_id ==-1)%>
+    <td><%= image_tag("cancel.png") %></td>
+      <%else %>
+    <td><%= image_tag("ok.png") %></td>
+    <%end %>
+<td><h3>Вопрос № <%=@q.id%> от <%=User.find(@q.user_id).email%></h3></td>
+  </tr>
+</table>
+<%=@q.body%>
 <p>Задан: <%=@q.created_at%></p>
 <%if @q.answer_user_id !=-1 %>
 <hr color="red">
-<h3>Ответ от <%=User.find(@q.answer_user_id).email%></h3>
-<p><%=@q.answer%></p>
+  <table>
+  <tr>
+      <td><%= image_tag("ok.png") %></td>
+    <td><h3>Ответ от <%=User.find(@q.answer_user_id).email%></h3></td>
+  </tr>
+  </table>
+
+<%=@q.answer%>
 <p>Отвечен: <%=@q.updated_at%></p>
   <hr color="red">
 <%end %>
