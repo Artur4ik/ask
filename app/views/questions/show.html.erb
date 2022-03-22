@@ -1,10 +1,32 @@
-<h1>Вопрос № <%=@q.id%> от <%=User.find(@q.user_id).email%></h1>
-<h3><%=@q.body%></h3>
-<h3>Создан: <%=@q.created_at%></h3>
+<h3>Вопрос № <%=@q.id%> от <%=User.find(@q.user_id).email%></h3>
+<p><%=@q.body%></p>
+<p>Задан: <%=@q.created_at%></p>
+<%if @q.answer_user_id !=-1 %>
+<hr color="red">
+<h3>Ответ от <%=User.find(@q.answer_user_id).email%></h3>
+<p><%=@q.answer%></p>
+<p>Отвечен: <%=@q.updated_at%></p>
+  <hr color="red">
+<%end %>
 <%if user_signed_in? %>
 <%if(User.find(@q.user_id).id == current_user.id)%>
 <%=button_to "Удалить вопрос", question_path(@q.id), method: :delete%>
+    <hr color="green">
+<%end%>
+  <%if(User.find(@q.user_id).id != current_user.id) && (@q.answer_user_id ==-1)%>
+    <hr color="red">
+    <%=form_for :question, url: question_path, method: :put do |f|%>
+      <p>Ответить как: <%=current_user.email%> (id: <%=f.text_field :answer_user_id, :value=>current_user.id, :size=>1%>)</p>
+      <p>Ответ:<br> <%=f.text_area :answer%></p>
+      <p><%=f.submit "Ответить"%></p>
+    <% end %>
+    <hr color="red">
 <%end %>
+<%else %>
+  <%if(@q.answer_user_id ==-1)%>
+<h3>Чтобы ответить на вопрос, необходимо авторизироваться.</h3>
+    <hr color="green">
+    <%end %>
 <%end %>
-<hr color="green">
+
 <h2><%=link_to "Вернуться ко всем вопросам", questions_path%></h2>
