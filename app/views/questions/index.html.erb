@@ -8,15 +8,16 @@
         <%else %>
           <td><%= image_tag("ok.png") %></td>
         <%end %>
+        <hr>
         <td><h3><%=link_to "Вопрос №#{i.id}", question_path(i.id)%> от <%=link_to User.find(i.user_id).email, "/users/#{User.find(i.user_id).id}"%></h3></td>
       </tr>
     </table>
 <%=i.body%>
 <p>Создан: <%=i.created_at%></p>
-<hr color="green">
+    <hr>
 <%end%>
-<%else%>
+<%else%><hr>
   <h2>Нет вопросов</h2>
   <hr color="green">
 <%end %>
-<h2><%=link_to "Добавить новый вопрос", new_question_path%></h2>
+<%=button_to "Добавить новый вопрос", new_question_path, method: :get, class: "btn btn-warning"%>

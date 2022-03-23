@@ -3,7 +3,7 @@
   <%=form_for :post, url: questions_path do |f|%>
     <p>Пользователь: <%=current_user.email%> (id: <%=f.text_field :user_id, :value=>current_user.id, :size=>1%>)</p>
     <p>Текст вопроса:<br> <%=f.text_area :body%></p>
-    <p><%=f.submit "Добавить"%></p>
+    <p><%=f.submit "Добавить", class: "btn btn-warning"%></p>
   <% end %>
 <% else %>
   <h2>Для добавления вопросов необходимо авторизироваться.</h2>
