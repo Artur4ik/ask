@@ -1,4 +1,5 @@
 <h1>Добавить новый вопрос</h1>
+<hr>
 <%if user_signed_in? %>
   <%=form_for :post, url: questions_path do |f|%>
     <p>Пользователь: <%=current_user.name%> (id: <%=f.text_field :user_id, :value=>current_user.id, :size=>1%>)</p>
@@ -6,6 +7,7 @@
     <p><%=f.submit "Добавить", class: "btn btn-warning"%></p>
   <% end %>
 <% else %>
+
   <h2>Для добавления вопросов необходимо авторизироваться.</h2>
 <% end %>
 <hr color="green">

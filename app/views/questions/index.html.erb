@@ -3,7 +3,7 @@
 <%@q.each do |i|%>
     <table>
       <tr>
-        <%if (i.answer_user_id ==-1)%>
+        <%if (Answer.where(question_id: i.id).count == 0)%>
           <td><%= image_tag("cancel.png") %></td>
         <%else %>
           <td><%= image_tag("ok.png") %></td>

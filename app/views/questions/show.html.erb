@@ -1,6 +1,6 @@
 <table>
   <tr>
-    <%if (@q.answer_user_id ==-1)%>
+    <% if @a.count == 0 %>
     <td><%= image_tag("cancel.png") %></td>
       <%else %>
     <td><%= image_tag("ok.png") %></td>
@@ -9,40 +9,39 @@
   </tr>
 </table>
 <%=@q.body%>
-<p>Задан: <%=@q.created_at.strftime("%d.%m.%Y, %H:%M")%></p>
-<%if @q.answer_user_id !=-1 %>
-<hr color="red">
+<p>Задан: <%=@q.created_at.strftime("%d.%m.%Y, %H:%M")%></p><hr>
+<% if @a.count != 0 %>
+  <%@a.each do |i|%>
   <table>
   <tr>
-      <td><%= image_tag("ok.png") %></td>
-    <td><h3>Ответ от <%=link_to User.find(@q.answer_user_id).name, "/users/#{User.find(@q.answer_user_id).id}"%></h3></td>
+    <td><h3>Ответ от <%=link_to User.find(i.answer_user_id).name, "/users/#{User.find(i.answer_user_id).id}"%></h3></td>
   </tr>
   </table>
-
-<%=@q.answer%>
-<p>Отвечен: <%=@q.updated_at%></p>
+<%=i.body%>
+<p><%=i.updated_at.strftime("%d.%m.%Y, %H:%M")%></p>
   <hr color="red">
+    <%end %>
 <%end %>
+
+
 <%if user_signed_in? %>
-<%if(User.find(@q.user_id).id == current_user.id)%>
-<%=button_to "Удалить вопрос", question_path(@q.id), method: :delete, class: "btn btn-warning"%>
-    <hr color="green">
-<%end%>
-  <%if(User.find(@q.user_id).id != current_user.id) && (@q.answer_user_id ==-1)%>
-    <hr color="red">
+
+    <hr>
     <%=form_for :question, url: question_path, method: :put do |f|%>
       <p>Ответить как: <%=current_user.name%> (id: <%=f.text_field :answer_user_id, :value=>current_user.id, :size=>1%>)</p>
       <p>Ответ:<br> <%=f.text_area :answer%></p>
       <p><%=f.submit "Ответить", class: "btn btn-warning"%></p>
     <% end %>
-    <hr color="red">
-<%end %>
-<%else %>
-  <%if(@q.answer_user_id ==-1)%>
     <hr>
-<h3>Чтобы ответить на вопрос, необходимо авторизироваться.</h3>
-    <hr color="green">
-    <%end %>
 <%end %>
 
-<%=button_to "На главную", questions_path, method: :get, class: "btn btn-warning"%>
+
+<table>
+  <tr>
+    <%if(user_signed_in? && User.find(@q.user_id).id == current_user.id)%>
+    <td><%=button_to "Удалить вопрос", question_path(@q.id), method: :delete, class: "btn btn-warning"%></td>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <%end%>
+    <td><%=button_to "Главная страница", questions_path, method: :get, class: "btn btn-warning"%></td>
+  </tr>
+</table>

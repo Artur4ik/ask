@@ -5,7 +5,16 @@
     <td><%= image_tag("user.png") %>&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td>Пользователь:<h3><%=User.find(params[:id]).name%></h3>Дата регистрации:<br><h3><%=User.find(params[:id]).created_at.strftime("%d.%m.%Y")%></h3></td>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td>Электронная почта:<h3><%=User.find(params[:id]).email%><%= image_tag("ok.png") %></h3>Страна:<h3>Российская Федерация</h3></td>
+    <td>Электронная почта:<h3><%=User.find(params[:id]).email%><%= image_tag("ok.png") %></h3>Страна:
+      <h3>
+        <%if User.find(params[:id]).country == "Российская Федерация" || User.find(params[:id]).country == "Россия"%>
+          🇷🇺
+          <%end %>
+        <%if User.find(params[:id]).country == "Республика Беларусь"%>
+          🇧🇾
+        <%end %>
+        <%=User.find(params[:id]).country%>
+      </h3></td>
   </tr>
 </table><hr>
 <h3>Вопросы, заданные пользователем:</h3>
