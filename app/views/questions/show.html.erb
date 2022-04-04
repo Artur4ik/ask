@@ -5,7 +5,7 @@
       <%else %>
     <td><%= image_tag("ok.png") %></td>
     <%end %><hr>
-<td><h3>Вопрос №<%=@q.id%> от <%=link_to User.find(@q.user_id).email, "/users/#{User.find(@q.user_id).id}"%></h3></td>
+<td><h3>Вопрос №<%=@q.id%> от <%=link_to User.find(@q.user_id).name, "/users/#{User.find(@q.user_id).id}"%></h3></td>
   </tr>
 </table>
 <%=@q.body%>
@@ -15,7 +15,7 @@
   <table>
   <tr>
       <td><%= image_tag("ok.png") %></td>
-    <td><h3>Ответ от <%=link_to User.find(@q.answer_user_id).email, "/users/#{User.find(@q.answer_user_id).id}"%></h3></td>
+    <td><h3>Ответ от <%=link_to User.find(@q.answer_user_id).name, "/users/#{User.find(@q.answer_user_id).id}"%></h3></td>
   </tr>
   </table>
 
@@ -31,7 +31,7 @@
   <%if(User.find(@q.user_id).id != current_user.id) && (@q.answer_user_id ==-1)%>
     <hr color="red">
     <%=form_for :question, url: question_path, method: :put do |f|%>
-      <p>Ответить как: <%=current_user.email%> (id: <%=f.text_field :answer_user_id, :value=>current_user.id, :size=>1%>)</p>
+      <p>Ответить как: <%=current_user.name%> (id: <%=f.text_field :answer_user_id, :value=>current_user.id, :size=>1%>)</p>
       <p>Ответ:<br> <%=f.text_area :answer%></p>
       <p><%=f.submit "Ответить", class: "btn btn-warning"%></p>
     <% end %>

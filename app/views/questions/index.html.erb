@@ -9,7 +9,7 @@
           <td><%= image_tag("ok.png") %></td>
         <%end %>
         <hr>
-        <td><h3><%=link_to "Вопрос №#{i.id}", question_path(i.id)%> от <%=link_to User.find(i.user_id).email, "/users/#{User.find(i.user_id).id}"%></h3></td>
+        <td><h3><%=link_to "Вопрос №#{i.id}", question_path(i.id)%> от <%=link_to User.find(i.user_id).name, "/users/#{User.find(i.user_id).id}"%></h3></td>
       </tr>
     </table>
 <%=i.body%>

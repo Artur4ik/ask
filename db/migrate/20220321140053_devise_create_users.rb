@@ -35,9 +35,11 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
 
       t.timestamps null: false
     end
-
+    add_column :users, :name, :string, null: false, default: ""
+    add_column :users, :country, :string, null: false, default: "Российская Федерация"
     add_index :users, :email,                unique: true
     add_index :users, :reset_password_token, unique: true
+
     # add_index :devise, :confirmation_token,   unique: true
     # add_index :devise, :unlock_token,         unique: true
   end

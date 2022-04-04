@@ -3,7 +3,7 @@
   <hr>
   <tr>
     <td><%= image_tag("user.png") %>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td>Пользователь:<h3><%=User.find(params[:id]).id%></h3>Дата регистрации:<br><h3><%=User.find(params[:id]).created_at.strftime("%d.%m.%Y")%></h3></td>
+    <td>Пользователь:<h3><%=User.find(params[:id]).name%></h3>Дата регистрации:<br><h3><%=User.find(params[:id]).created_at.strftime("%d.%m.%Y")%></h3></td>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td>Электронная почта:<h3><%=User.find(params[:id]).email%><%= image_tag("ok.png") %></h3>Страна:<h3>Российская Федерация</h3></td>
 
@@ -15,7 +15,7 @@
   <table>
     <tr>
       <td><%= image_tag("autorisated.png") %></td>
-      <td><h3>Пользователь: <%=User.find(params[:id]).email%>, id:(<%=params[:id]%>)</h3></td>
+      <td><h3>Пользователь: <%=User.find(params[:id]).name%>, id:(<%=params[:id]%>)</h3></td>
       <td><%= image_tag("ok.png") %></td>
       <td><h3>Зарегистрирован: <%=User.find(params[:id]).created_at%></h3></td>
     </tr>
@@ -35,7 +35,7 @@
         <%else %>
           <td><%= image_tag("ok.png") %></td>
         <%end %>
-        <td><h3><%=link_to "Вопрос №#{i.id}", question_path(i.id)%> от <%=User.find(i.user_id).email%></h3></td>
+        <td><h3><%=link_to "Вопрос №#{i.id}", question_path(i.id)%> от <%=User.find(i.user_id).name%></h3></td>
       </tr>
     </table>
     <%=i.body%>

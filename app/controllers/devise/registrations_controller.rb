@@ -22,6 +22,7 @@ class Devise::RegistrationsController < DeviseController
       if resource.active_for_authentication?
         set_flash_message! :notice, :signed_up
         sign_up(resource_name, resource)
+        redirect_to questions_path
         # respond_with resource, location: after_sign_up_path_for(resource)
       else
         set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
@@ -33,7 +34,7 @@ class Devise::RegistrationsController < DeviseController
       set_minimum_password_length
       respond_with resource
     end
-    redirect_to questions_path
+
   end
 
   # GET /resource/edit
