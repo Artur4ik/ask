@@ -23,7 +23,7 @@
             <%if user_signed_in? %>
               <table>
                 <tr>
-                  <td><%= image_tag("autorisated.png") %>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                  <td><%= image_tag("user.png", width: 32, height: 32) %>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                   <td><%=link_to current_user.name, "/users/#{current_user.id}"%>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                   <td><%=button_to "Выйти", destroy_user_session_path, method: :delete, class: "btn btn-outline-light me-2"%></td>
                 </tr>
@@ -58,4 +58,5 @@
     <%= yield %>
   </div>
   </body>
+
 </html>

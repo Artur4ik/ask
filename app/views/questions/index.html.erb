@@ -1,6 +1,6 @@
-<% unless @q.count == 0
-  @q.each do |i|
-%>
+<% unless @q.count == 0 %>
+  <h3>Новые вопросы:</h3>
+<%@q.each do |i|%>
     <table>
       <tr>
         <%if (i.answer_user_id ==-1)%>

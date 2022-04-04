@@ -1,7 +1,7 @@
 <h1>Добавить новый вопрос</h1>
 <%if user_signed_in? %>
   <%=form_for :post, url: questions_path do |f|%>
-    <p>Пользователь: <%=current_user.email%> (id: <%=f.text_field :user_id, :value=>current_user.id, :size=>1%>)</p>
+    <p>Пользователь: <%=current_user.name%> (id: <%=f.text_field :user_id, :value=>current_user.id, :size=>1%>)</p>
     <p>Текст вопроса:<br> <%=f.text_area :body%></p>
     <p><%=f.submit "Добавить", class: "btn btn-warning"%></p>
   <% end %>
@@ -9,4 +9,4 @@
   <h2>Для добавления вопросов необходимо авторизироваться.</h2>
 <% end %>
 <hr color="green">
-<h2><%=link_to "Вернуться ко всем вопросам", questions_path%></h2>
+<%=button_to "Главная страница", questions_path, method: :get, class: "btn btn-warning"%>

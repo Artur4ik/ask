@@ -39,9 +39,10 @@
 <%end %>
 <%else %>
   <%if(@q.answer_user_id ==-1)%>
+    <hr>
 <h3>Чтобы ответить на вопрос, необходимо авторизироваться.</h3>
     <hr color="green">
     <%end %>
 <%end %>
 
-<h2><%=link_to "Вернуться ко всем вопросам", questions_path%></h2>
+<%=button_to "На главную", questions_path, method: :get, class: "btn btn-warning"%>

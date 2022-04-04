@@ -6,22 +6,21 @@
     <td>Пользователь:<h3><%=User.find(params[:id]).name%></h3>Дата регистрации:<br><h3><%=User.find(params[:id]).created_at.strftime("%d.%m.%Y")%></h3></td>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td>Электронная почта:<h3><%=User.find(params[:id]).email%><%= image_tag("ok.png") %></h3>Страна:<h3>Российская Федерация</h3></td>
-
   </tr>
 </table><hr>
 <h3>Вопросы, заданные пользователем:</h3>
   <hr color="green">
 <%else%>
+  <hr>
   <table>
     <tr>
-      <td><%= image_tag("autorisated.png") %></td>
-      <td><h3>Пользователь: <%=User.find(params[:id]).name%>, id:(<%=params[:id]%>)</h3></td>
-      <td><%= image_tag("ok.png") %></td>
-      <td><h3>Зарегистрирован: <%=User.find(params[:id]).created_at%></h3></td>
+      <td><%= image_tag("user.png") %>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      <td>Пользователь:<h3><%=User.find(params[:id]).name%></h3>Дата регистрации:<br><h3><%=User.find(params[:id]).created_at.strftime("%d.%m.%Y")%></h3></td>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      <td>Электронная почта:<h3><%=User.find(params[:id]).email%><%= image_tag("ok.png") %></h3>Страна:<h3>Российская Федерация</h3></td>
     </tr>
   </table>
   <h3>Вопросы, заданные пользователем:</h3>
-  <hr color="green">
 <%end%>
 <hr color="green">
 <% unless @q.count == 0
@@ -46,4 +45,4 @@
   <h2>Нет вопросов</h2>
   <hr color="green">
 <%end %>
-<h2><%=link_to "Вернуться ко всем вопросам", questions_path%></h2>
+<%=button_to "Главная страница", questions_path, method: :get, class: "btn btn-warning"%>
