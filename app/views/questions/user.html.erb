@@ -1,16 +1,16 @@
 <%if user_signed_in? %>
-<%unless (User.find(params[:id]).email == current_user.email)%>
 <table>
+  <hr>
   <tr>
-    <td><%= image_tag("autorisated.png") %></td>
-    <td><h3>Пользователь: <%=User.find(params[:id]).email%>, id:(<%=params[:id]%>)</h3></td>
-    <td><%= image_tag("ok.png") %></td>
-    <td><h3>Зарегистрирован: <%=User.find(params[:id]).created_at%></h3></td>
+    <td><%= image_tag("user.png") %>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td>Пользователь:<h3><%=User.find(params[:id]).id%></h3>Дата регистрации:<br><h3><%=User.find(params[:id]).created_at.strftime("%d.%m.%Y")%></h3></td>
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td>Электронная почта:<h3><%=User.find(params[:id]).email%><%= image_tag("ok.png") %></h3>Страна:<h3>Российская Федерация</h3></td>
+
   </tr>
-</table>
+</table><hr>
 <h3>Вопросы, заданные пользователем:</h3>
   <hr color="green">
-<%end%>
 <%else%>
   <table>
     <tr>
@@ -39,7 +39,7 @@
       </tr>
     </table>
     <%=i.body%>
-    <p>Создан: <%=i.created_at%></p>
+    <p>Создан: <%=i.created_at.strftime("%d.%m.%Y, %H:%M")%></p>
     <hr color="green">
   <%end%>
 <%else%>

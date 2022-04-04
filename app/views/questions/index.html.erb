@@ -13,7 +13,7 @@
       </tr>
     </table>
 <%=i.body%>
-<p>Создан: <%=i.created_at%></p>
+<p>Создан: <%=i.created_at.strftime("%d.%m.%Y, %H:%M")%></p>
     <hr>
 <%end%>
 <%else%><hr>

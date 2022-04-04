@@ -24,7 +24,7 @@
               <table>
                 <tr>
                   <td><%= image_tag("autorisated.png") %></td>
-                  <td>Выполнен вход: <%=current_user.email%></td>
+                  <td><%=current_user.email%></td>
                   <td><%=button_to "Выйти", destroy_user_session_path, method: :delete, class: "btn btn-outline-light me-2"%></td>
                 </tr>
               </table>

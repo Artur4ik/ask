@@ -9,7 +9,7 @@
   </tr>
 </table>
 <%=@q.body%>
-<p>Задан: <%=@q.created_at%></p>
+<p>Задан: <%=@q.created_at.strftime("%d.%m.%Y, %H:%M")%></p>
 <%if @q.answer_user_id !=-1 %>
 <hr color="red">
   <table>
