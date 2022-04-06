@@ -2,8 +2,8 @@
 <hr>
 <%if user_signed_in? %>
   <%=form_for :post, url: questions_path do |f|%>
-    <p>Пользователь: <%=current_user.name%> (id: <%=f.text_field :user_id, :value=>current_user.id, :size=>1%>)</p>
-    <p>Текст вопроса:<br> <%=f.text_area :body%></p>
+    <p><h3><%=current_user.name%>:</h3></p>
+    <p><%=f.text_area :body, :cols => 50, :rows => 5%></p>
     <p><%=f.submit "Добавить", class: "btn btn-warning"%></p>
   <% end %>
 <% else %>

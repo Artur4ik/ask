@@ -1,24 +1,29 @@
+<hr>
 <table>
   <tr>
-    <% if @a.count == 0 %>
-    <td><%= image_tag("cancel.png") %></td>
+    <td><%= image_tag "user.png", width: 80, height: 80 %></td>
+    <td>&nbsp;</td>
+    <td><h3>
+      <%if (Answer.where(question_id: @q.id).count == 0)%>
+        <%= image_tag("cancel.png", width: 25, height: 25) %>
       <%else %>
-    <td><%= image_tag("ok.png") %></td>
-    <%end %><hr>
-<td><h3>Вопрос №<%=@q.id%> от <%=link_to User.find(@q.user_id).name, "/users/#{User.find(@q.user_id).id}"%></h3></td>
+        <%= image_tag("ok.png", width: 25, height: 25) %>
+      <%end %>
+      Вопрос №<%=@q.id%> от <%=link_to User.find(@q.user_id).name, "/users/#{User.find(@q.user_id).id}"%></h3><%=@q.body%><p align="left"><%=@q.created_at.strftime("%d.%m.%Y, %H:%M")%></p></td>
   </tr>
 </table>
-<%=@q.body%>
-<p>Задан: <%=@q.created_at.strftime("%d.%m.%Y, %H:%M")%></p><hr>
+<hr>
 <% if @a.count != 0 %>
   <%@a.each do |i|%>
   <table>
   <tr>
-    <td><h3>Ответ от <%=link_to User.find(i.answer_user_id).name, "/users/#{User.find(i.answer_user_id).id}"%></h3></td>
+    <td><%= image_tag "user.png", width: 80, height: 80 %></td>
+    <td>&nbsp;</td>
+    <td><h3><%=link_to User.find(i.answer_user_id).name, "/users/#{User.find(i.answer_user_id).id}"%></h3><%=i.body%><p align="left"><%=i.updated_at.strftime("%d.%m.%Y, %H:%M")%></p></td>
   </tr>
   </table>
-<%=i.body%>
-<p><%=i.updated_at.strftime("%d.%m.%Y, %H:%M")%></p>
+
+
   <hr color="red">
     <%end %>
 <%end %>
@@ -28,8 +33,8 @@
 
     <hr>
     <%=form_for :question, url: question_path, method: :put do |f|%>
-      <p>Ответить как: <%=current_user.name%> (id: <%=f.text_field :answer_user_id, :value=>current_user.id, :size=>1%>)</p>
-      <p>Ответ:<br> <%=f.text_area :answer%></p>
+      <p><h3><%=current_user.name%>:</h3></p>
+      <p><%=f.text_area :answer, :cols => 50, :rows => 5%></p>
       <p><%=f.submit "Ответить", class: "btn btn-warning"%></p>
     <% end %>
     <hr>

@@ -12,6 +12,9 @@
         <%if User.find(params[:id]).country == "Республика Беларусь"%>
           🇧🇾
         <%end %>
+        <%if User.find(params[:id]).country == "Украина"%>
+          🇺🇦
+        <%end %>
         <%=User.find(params[:id]).country%>
       </h3></td>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -33,11 +36,11 @@
     <table>
       <tr>
         <%if (Answer.where(question_id: i.id).count == 0)%>
-          <td><%= image_tag("cancel.png") %></td>
+          <td><%= image_tag("cancel.png", width: 25, height: 25) %></td>
         <%else %>
-          <td><%= image_tag("ok.png") %></td>
+          <td><%= image_tag("ok.png", width: 25, height: 25) %></td>
         <%end %>
-        <td><h3><%=link_to "Вопрос №#{i.id}", question_path(i.id)%> от <%=User.find(i.user_id).name%></h3></td>
+        <td><h3><%=link_to "Вопрос №#{i.id}", question_path(i.id)%></h3></td>
       </tr>
     </table>
     <%=i.body%>

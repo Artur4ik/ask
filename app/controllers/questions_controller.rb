@@ -3,12 +3,13 @@ class QuestionsController < ApplicationController
   def create
     @q = Question.create(
       body:params[:post][:body],
-      user_id:params[:post][:user_id]
+      user_id:current_user.id
     )
     redirect_to question_path(@q.id)
   end
   def index
     @q = Question.all
+    #@u = User.where('created_at >= ?', Date.today)
     @u = User.all
   end
 
@@ -19,7 +20,7 @@ class QuestionsController < ApplicationController
     #@q.save
     Answer.create(body: params[:question][:answer],
                   question_id: params[:id],
-                  answer_user_id: params[:question][:answer_user_id])
+                  answer_user_id: current_user.id)
 
     redirect_to question_path
   end

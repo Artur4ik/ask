@@ -1,19 +1,20 @@
 <% unless @q.count == 0 %>
   <h3>Новые вопросы:</h3>
+  <hr>
   <%@q.each do |i|%>
     <table>
       <tr>
-        <%if (Answer.where(question_id: i.id).count == 0)%>
-          <td><%= image_tag("cancel.png") %></td>
-        <%else %>
-          <td><%= image_tag("ok.png") %></td>
-        <%end %>
-        <hr>
-        <td><h3><%=link_to "Вопрос №#{i.id}", question_path(i.id)%> от <%=link_to User.find(i.user_id).name, "/users/#{User.find(i.user_id).id}"%></h3></td>
+        <td><%= image_tag "user.png", width: 80, height: 80%></td>
+        <td>&nbsp;</td>
+        <td><h3>
+          <%if (Answer.where(question_id: i.id).count == 0)%>
+            <%= image_tag("cancel.png", width: 25, height: 25) %>
+          <%else %>
+            <%= image_tag("ok.png", width: 25, height: 25) %>
+          <%end %>
+          <%=link_to "Вопрос №#{i.id}", question_path(i.id) %> от <%=link_to User.find(i.user_id).name, "/users/#{User.find(i.user_id).id}"%></h3><%=i.body%><p align="left"><%=i.created_at.strftime("%d.%m.%Y, %H:%M")%></p></td>
       </tr>
     </table>
-    <%=i.body%>
-    <p>Создан: <%=i.created_at.strftime("%d.%m.%Y, %H:%M")%></p>
     <hr>
   <%end%>
 <%else%><hr>
@@ -21,9 +22,9 @@
   <hr color="green">
 <%end %>
 <%unless @u.count == 0 %>
-  <h4>Новые пользователи:
+  <h4>Пользователи:
     <%@u.each do |i|%>
-      <%=link_to "#{User.find(i.id).name}", "/users/#{User.find(i.id).id}"%>&nbsp;
+      <%= image_tag "user.png", width: 23, height: 23%>&nbsp;<%=link_to "#{User.find(i.id).name}", "/users/#{User.find(i.id).id}"%>&nbsp;
     <%end %>
     <hr>
 <%end %></h4>
