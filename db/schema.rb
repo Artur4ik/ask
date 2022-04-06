@@ -23,8 +23,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_04_170303) do
     t.text "body"
     t.integer "user_id"
     t.integer "true"
-    t.text "answer"
-    t.integer "answer_user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

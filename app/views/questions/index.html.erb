@@ -1,6 +1,6 @@
 <% unless @q.count == 0 %>
   <h3>Новые вопросы:</h3>
-<%@q.each do |i|%>
+  <%@q.each do |i|%>
     <table>
       <tr>
         <%if (Answer.where(question_id: i.id).count == 0)%>
@@ -12,12 +12,19 @@
         <td><h3><%=link_to "Вопрос №#{i.id}", question_path(i.id)%> от <%=link_to User.find(i.user_id).name, "/users/#{User.find(i.user_id).id}"%></h3></td>
       </tr>
     </table>
-<%=i.body%>
-<p>Создан: <%=i.created_at.strftime("%d.%m.%Y, %H:%M")%></p>
+    <%=i.body%>
+    <p>Создан: <%=i.created_at.strftime("%d.%m.%Y, %H:%M")%></p>
     <hr>
-<%end%>
+  <%end%>
 <%else%><hr>
   <h2>Нет вопросов</h2>
   <hr color="green">
 <%end %>
+<%unless @u.count == 0 %>
+  <h4>Новые пользователи:
+    <%@u.each do |i|%>
+      <%=link_to "#{User.find(i.id).name}", "/users/#{User.find(i.id).id}"%>&nbsp;
+    <%end %>
+    <hr>
+<%end %></h4>
 <%=button_to "Добавить новый вопрос", new_question_path, method: :get, class: "btn btn-warning"%>

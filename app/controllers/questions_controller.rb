@@ -9,6 +9,7 @@ class QuestionsController < ApplicationController
   end
   def index
     @q = Question.all
+    @u = User.all
   end
 
   def update
