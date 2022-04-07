@@ -30,8 +30,6 @@
 
 
 <%if user_signed_in? %>
-
-    <hr>
     <%=form_for :question, url: question_path, method: :put do |f|%>
       <p><h3>Ответ:</h3></p>
       <p><%=f.text_area :answer, :cols => 50, :rows => 5%></p>
