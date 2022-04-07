@@ -5,7 +5,10 @@
   <table>
     <hr>
     <tr>
-      <td><%= image_tag("user.png") %>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      <td>
+        <%=User.find(current_user.id).avatar.attached? ? image_tag(url_for(User.find(current_user.id).avatar), width: 128, height: 128, class: "rounded-circle"): image_tag("user.png")%>
+        <%= f.file_field :avatar %>
+        &nbsp;&nbsp;&nbsp;&nbsp;</td>
       <td>Пользователь:<br><%= f.text_field :name, autofocus: true%><br>Дата регистрации:<br><%=User.find(current_user.id).created_at.strftime("%d.%m.%Y")%></td>
       <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
       <td>Электронная почта:<br><%= f.email_field :email, autofocus: true, autocomplete: "email" %><br>Страна:<br><%= f.text_field :country%></td>

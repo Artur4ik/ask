@@ -1,7 +1,7 @@
 <hr>
 <table>
   <tr>
-    <td><%= image_tag "user.png", width: 80, height: 80 %></td>
+    <td><%= User.find(@q.user_id).avatar.attached? ? image_tag(url_for(User.find(@q.user_id).avatar), width: 80, height: 80, class: "rounded-circle"): image_tag("user.png", width: 80, height: 80)%></td>
     <td>&nbsp;</td>
     <td><h3>
       <%if (Answer.where(question_id: @q.id).count == 0)%>
@@ -17,7 +17,7 @@
   <%@a.each do |i|%>
   <table>
   <tr>
-    <td><%= image_tag "user.png", width: 80, height: 80 %></td>
+    <td><%= User.find(i.answer_user_id).avatar.attached? ? image_tag(url_for(User.find(i.answer_user_id).avatar), width: 80, height: 80, class: "rounded-circle"): image_tag("user.png", width: 80, height: 80)%></td>
     <td>&nbsp;</td>
     <td><h3><%=link_to User.find(i.answer_user_id).name, "/users/#{User.find(i.answer_user_id).id}"%></h3><%=i.body%><p align="left"><%=i.updated_at.strftime("%d.%m.%Y, %H:%M")%></p></td>
   </tr>
@@ -33,7 +33,7 @@
 
     <hr>
     <%=form_for :question, url: question_path, method: :put do |f|%>
-      <p><h3><%=current_user.name%>:</h3></p>
+      <p><h3>Ответ:</h3></p>
       <p><%=f.text_area :answer, :cols => 50, :rows => 5%></p>
       <p><%=f.submit "Ответить", class: "btn btn-warning"%></p>
     <% end %>

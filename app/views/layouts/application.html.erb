@@ -22,7 +22,7 @@
             <%if user_signed_in? %>
               <table>
                 <tr>
-                  <td><%= image_tag("user.png", width: 32, height: 32) %>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                  <td><%=User.find(current_user.id).avatar.attached? ? image_tag(url_for(User.find(current_user.id).avatar), width: 32, height: 32, class: "rounded-circle"): image_tag("user.png", width: 32, height: 32) %>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                   <td><%=link_to current_user.name, "/users/#{current_user.id}"%>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                   <td><%=button_to "Выйти", destroy_user_session_path, method: :delete, class: "btn btn-outline-light me-2"%></td>
                 </tr>

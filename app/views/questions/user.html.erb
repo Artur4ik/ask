@@ -1,7 +1,7 @@
 <table>
   <hr>
   <tr>
-    <td><%= image_tag("user.png") %>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><%=User.find(params[:id]).avatar.attached? ? image_tag(url_for(User.find(params[:id]).avatar), width: 128, height: 128, class: "rounded-circle"): image_tag("user.png")%>&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td>Пользователь:<h3><%=User.find(params[:id]).name%></h3>Дата регистрации:<br><h3><%=User.find(params[:id]).created_at.strftime("%d.%m.%Y")%></h3></td>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td>Электронная почта:<h3><%=User.find(params[:id]).email%><%= image_tag("ok.png") %></h3>Страна:
