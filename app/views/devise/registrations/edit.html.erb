@@ -6,8 +6,9 @@
     <hr>
     <tr>
       <td>
-        <%=User.find(current_user.id).avatar.attached? ? image_tag(url_for(User.find(current_user.id).avatar), width: 128, height: 128, class: "rounded-circle"): image_tag("user.png")%>
-        <%= f.file_field :avatar %>
+        <%=image_tag(User.find(current_user.id).avatar_url, width: 128, height: 128, class: "rounded-circle")%>
+        <br>Ссылка:<br>
+        <%= f.text_field :avatar_url, size:6%>
         &nbsp;&nbsp;&nbsp;&nbsp;</td>
       <td>Пользователь:<br><%= f.text_field :name, autofocus: true%><br>Дата регистрации:<br><%=User.find(current_user.id).created_at.strftime("%d.%m.%Y")%></td>
       <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>

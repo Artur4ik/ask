@@ -4,7 +4,7 @@
   <%@q.each do |i|%>
     <table>
       <tr>
-        <td><%=User.find(i.user_id).avatar.attached? ? image_tag(url_for(User.find(i.user_id).avatar), width: 80, height: 80, class: "rounded-circle"): image_tag("user.png", width: 80, height: 80)%></td>
+        <td><%=image_tag(User.find(i.user_id).avatar_url, width: 80, height: 80, class: "rounded-circle")%></td>
         <td>&nbsp;</td>
         <td><h3>
           <%if (Answer.where(question_id: i.id).count == 0)%>
@@ -24,7 +24,7 @@
 <%unless @u.count == 0 %>
   <h4>Пользователи:
     <%@u.each do |i|%>
-      <%=User.find(i.id).avatar.attached? ? image_tag(url_for(User.find(i.id).avatar), width: 23, height: 23, class: "rounded-circle"): image_tag("user.png", width: 23, height: 23)%>&nbsp;<%=link_to "#{User.find(i.id).name}", "/users/#{User.find(i.id).id}"%>&nbsp;
+      <%=image_tag(User.find(i.id).avatar_url, width: 23, height: 23, class: "rounded-circle")%>&nbsp;<%=link_to "#{User.find(i.id).name}", "/users/#{User.find(i.id).id}"%>&nbsp;
     <%end %>
     <hr>
 <%end %></h4>
