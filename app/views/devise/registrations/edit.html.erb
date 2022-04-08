@@ -12,7 +12,7 @@
         &nbsp;&nbsp;&nbsp;&nbsp;</td>
       <td>Пользователь:<br><%= f.text_field :name, autofocus: true%><br>Дата регистрации:<br><%=User.find(current_user.id).created_at.strftime("%d.%m.%Y")%></td>
       <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-      <td>Электронная почта:<br><%= f.email_field :email, autofocus: true, autocomplete: "email" %><br>Страна:<br><%= f.text_field :country%></td>
+      <td>Электронная почта:<br><%= f.email_field :email, autofocus: true, autocomplete: "email" %><br>Страна:<br><%= f.select(:country, ['Российская Федерация', 'Республика Беларусь', 'Украина'])%></td>
       <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
       <td>Текущий пароль:<br><%= f.password_field :current_password, autocomplete: "current-password" %><br>Новый пароль: (необязательно)<br><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
     </tr>

@@ -1,7 +1,7 @@
 <table>
   <hr>
   <tr>
-    <td><%=image_tag(User.find(params[:id]).avatar_url, width: 128, height: 128, class: "rounded-circle")%>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><a href=<%="#{User.find(params[:id]).avatar_url}"%>><%=image_tag(User.find(params[:id]).avatar_url, width: 128, height: 128, class: "rounded-circle")%></a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td>Пользователь:<h3><%=User.find(params[:id]).name%></h3>Дата регистрации:<br><h3><%=User.find(params[:id]).created_at.strftime("%d.%m.%Y")%></h3></td>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td>Электронная почта:<h3><%=User.find(params[:id]).email%><%= image_tag("ok.png") %></h3>Страна:
@@ -26,13 +26,22 @@
     </td>
   </tr>
 </table><hr>
-<h3>Вопросы, заданные пользователем:</h3>
-  <hr color="green">
-
+<%if (user_signed_in?  && current_user.id == User.find(params[:id]).id)%>
+  <h3>Мои вопросы:</h3><hr>
+  <details>
+    <summary><strong>Добавить вопрос</strong></summary>
+    <%=form_for :post, url: questions_path do |f|%>
+      <p><%= image_tag(User.find(current_user.id).avatar_url, width: 30, height: 30, class: "rounded-circle")%>&nbsp;
+      <%=f.text_field :body%>&nbsp;<%=f.submit "Добавить", class: "btn btn-warning"%></p>
+    <% end %>
+    </details>
+  <%else %>
+<h3>Вопросы от пользователя:</h3>
+  <%end %>
+  <hr>
 <% unless @q.count == 0
      @q.each do |i|
 %>
-
     <table>
       <tr>
         <%if (Answer.where(question_id: i.id).count == 0)%>
