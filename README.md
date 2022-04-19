@@ -2,5 +2,3 @@
 
 Проект доступен на Heroku:
 https://askd2r.herokuapp.com
-
-End
