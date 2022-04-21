@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.1"
 
-gem "devise"
+gem 'devise'
 gem 'devise-i18n'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
@@ -70,3 +70,5 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "sidekiq", "~> 6.4"

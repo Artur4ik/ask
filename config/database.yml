@@ -3,21 +3,21 @@ development:
   database: db_development
   encoding: unicode
   host: localhost
-  username: 'artur'
-  password: '1111'
+  username: <%= ENV['DB_USER_NAME'] %>
+  password: <%= ENV['DB_USER_PASSWORD'] %>
 
 test:
   adapter: postgresql
   database: db_test
   encoding: unicode
   host: localhost
-  username: 'artur'
-  password: '1111'
+  username: <%= ENV['DB_USER_NAME'] %>
+  password: <%= ENV['DB_USER_PASSWORD'] %>
 
 production:
   adapter: postgresql
   database: db_production
   encoding: unicode
   host: localhost
-  username: 'artur'
-  password: '1111'
+  username: <%= ENV['DB_USER_NAME'] %>
+  password: <%= ENV['DB_USER_PASSWORD'] %>
