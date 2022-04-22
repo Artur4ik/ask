@@ -1,0 +1,12 @@
+en:
+  application:
+    main_page: "Main"
+    my_questions: "My questions"
+    add_question: "Add question"
+    log_in: "Log in"
+    log_out: "Log out"
+    sign_up: "Register"
+    logo: "AllQuestions.ru"
+    ru: "🇷🇺 RU"
+    en: "🇺🇸 EN"
+    motto: "ask your question and get answer right now!"

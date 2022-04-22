@@ -1,10 +1,10 @@
 <% unless @q.count == 0 %>
-  <h3>Новые вопросы:</h3>
+  <h3><%="#{t('questions.new_questions')}:"%></h3>
   <hr>
   <%@q.each do |i|%>
     <table>
       <tr>
-        <td><a href=<%="/users/#{i.user_id}"%>><%=image_tag(User.find(i.user_id).avatar_url, width: 80, height: 80, class: "rounded-circle")%></a></td>
+        <td><a href=<%=user_registration_url + "/#{i.user_id}"%>><%=image_tag(User.find(i.user_id).avatar_url, width: 80, height: 80, class: "rounded-circle")%></a></td>
         <td>&nbsp;</td>
         <td><h3>
           <%if (Answer.where(question_id: i.id).count == 0)%>
@@ -12,20 +12,20 @@
           <%else %>
             <%= image_tag("ok.png", width: 25, height: 25) %>
           <%end %>
-          <%=link_to "Вопрос №#{i.id}", question_path(i.id) %> от <%=link_to User.find(i.user_id).name, "/users/#{User.find(i.user_id).id}"%></h3><%=i.body%><p align="left"><%=i.created_at.strftime("%d.%m.%Y, %H:%M")%></p></td>
+          <%=link_to "#{t('questions.question')} №#{i.id}", question_path(id: i.id, locale: I18n.locale) %> <%="#{t('questions.from')}"%> <%=link_to User.find(i.user_id).name, user_registration_url + "/#{i.user_id}"%></h3><%=i.body%><p align="left"><%=i.created_at.strftime("%d.%m.%Y, %H:%M")%></p></td>
       </tr>
     </table>
     <hr>
   <%end%>
 <%else%><hr>
-  <h2>Нет вопросов</h2>
+  <h2><%="#{t('questions.no_questions')}"%></h2>
   <hr color="green">
 <%end %>
 <%unless @u.count == 0 %>
-  <h4>Пользователи:
+  <h4><%="#{t('questions.users')}"%>:
     <%@u.each do |i|%>
-      <a href=<%="/users/#{i.id}"%>><%=image_tag(User.find(i.id).avatar_url, width: 27, height: 27, class: "rounded-circle")%></a>&nbsp;<%=link_to "#{User.find(i.id).name}", "/users/#{User.find(i.id).id}"%>&nbsp;
+      <a href=<%=user_registration_url + "/#{i.id}"%>><%=image_tag(User.find(i.id).avatar_url, width: 27, height: 27, class: "rounded-circle")%></a>&nbsp;<%=link_to "#{User.find(i.id).name}", user_registration_url + "/#{i.id}"%>&nbsp;
     <%end %>
     <hr>
 <%end %></h4>
-<%=button_to "Добавить новый вопрос", new_question_path, method: :get, class: "btn btn-warning"%>
+<%=button_to "#{t('questions.add_new_question')}", new_question_path, method: :get, class: "btn btn-warning" if user_signed_in?%>

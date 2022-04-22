@@ -1,0 +1,8 @@
+en:
+  notifier_mailer:
+    account: "Account"
+    check_questions: "Let's see new questions on ВсеВопросы.рф"
+    notify: "Notify"
+    notice: "This email generated automaticaly. Please, don't send answer."
+    registration: "Thanks for registration!"
+    welcome: "Welcome to ВсеВопросы.рф"

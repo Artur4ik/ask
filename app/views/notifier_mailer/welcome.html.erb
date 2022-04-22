@@ -1,5 +1,5 @@
-Привет <%= @u.name %>!<br><br>
+<%=t('hello')%> <%= @u.name %>!<br><br>
 
-Спасибо за регистрацию!<br><br>
+<%=t('notifier_mailer.registration')%><br><br>
 
-<i>Письмо создано автоматически. Пожалуйста, не отвечайте на него.</i>
+<i><%=t('notifier_mailer.notice')%></i>

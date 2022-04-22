@@ -1,0 +1,9 @@
+en:
+  user:
+    add: "Add"
+    add_question: "Add question"
+    email: "Email"
+    name: "User"
+    sign_up_date: "Registration date"
+    country: "Country"
+    questions_from_user: "Questions from user"

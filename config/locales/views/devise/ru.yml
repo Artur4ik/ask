@@ -3,6 +3,14 @@
 
 ru:
   devise:
+    login_form:
+      autorization: "Авторизация пользователя"
+    registration_form:
+      registration: "Регистрация нового пользователя"
+      name: "Имя"
+      email: "Email"
+      country: "Страна"
+      sign_up: "Зарегистрироваться"
     confirmations:
       confirmed: "Ваша учётная запись успешно подтверждена."
       send_instructions: "В течение нескольких минут вы получите письмо с инструкциями по подтверждению вашей учётной записи."

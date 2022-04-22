@@ -1,0 +1,9 @@
+ru:
+  user:
+    add: "Добавить"
+    add_question: "Добавить вопрос"
+    email: "Электронная почта"
+    name: "Пользователь"
+    sign_up_date: "Дата регистрации"
+    country: "Страна"
+    questions_from_user: "Вопросы от пользователя"
