@@ -3,13 +3,18 @@
 en:
   devise:
     login_form:
-      autorization: "User autorization"
+      autorization: "User authorization"
     registration_form:
       registration: "Register new user"
       name: "Name"
       email: "Email"
       country: "Country"
       sign_up: "Sign up"
+    edit_form:
+      sign_up_date: "Sign up date"
+      current_password: "Current password (necessarily)"
+      new_password: "New password (if you want change)"
+      save: "Save changes"
     confirmations:
       confirmed: "Your email address has been successfully confirmed."
       send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."

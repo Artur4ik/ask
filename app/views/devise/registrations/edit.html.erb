@@ -7,21 +7,21 @@
     <tr>
       <td>
         <%=image_tag(User.find(current_user.id).avatar_url, width: 128, height: 128, class: "rounded-circle")%>
-        <br>Ссылка:<br>
+        <br>
         <%= f.text_field :avatar_url, size:6%>
         &nbsp;&nbsp;&nbsp;&nbsp;</td>
-      <td>Пользователь:<br><%= f.text_field :name, autofocus: true%><br>Дата регистрации:<br><%=User.find(current_user.id).created_at.strftime("%d.%m.%Y")%></td>
+      <td><%="#{t('devise.registration_form.name')}"%>:<br><%= f.text_field :name, autofocus: true%><br><%="#{t('devise.edit_form.sign_up_date')}:"%>:<br><%=User.find(current_user.id).created_at.strftime("%d.%m.%Y")%></td>
       <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-      <td>Электронная почта:<br><%= f.email_field :email, autofocus: true, autocomplete: "email" %><br>Страна:<br><%= f.select(:country, ['Российская Федерация', 'Республика Беларусь', 'Украина'])%></td>
+      <td><%="#{t('devise.registration_form.email')}"%>:<br><%= f.email_field :email, autofocus: true, autocomplete: "email" %><br><%="#{t('devise.registration_form.country')}"%>:<br><%= f.select(:country, ['Российская Федерация', 'Республика Беларусь', 'Украина'])%></td>
       <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-      <td>Текущий пароль:<br><%= f.password_field :current_password, autocomplete: "current-password" %><br>Новый пароль: (необязательно)<br><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+      <td><%="#{t('devise.edit_form.current_password')}"%>:<br><%= f.password_field :current_password, autocomplete: "current-password" %><br><%="#{t('devise.edit_form.new_password')}"%><br><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
     </tr>
   </table><hr>
   <table>
     <tr>
-      <td><%= f.submit "Сохранить изменения", class: "btn btn-warning"%></td>
+      <td><%= f.submit "#{t('devise.edit_form.save')}", class: "btn btn-warning"%></td>
 <% end %>
       <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-      <td><%=button_to "Главная страница", questions_path, method: :get, class: "btn btn-warning"%></td>
+      <td><%=button_to "#{t('application.main_page')}", questions_path, method: :get, class: "btn btn-warning"%></td>
     </tr>
   </table>

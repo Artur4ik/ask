@@ -1,0 +1,6 @@
+en:
+  questions:
+    root_welcome_en: "Welcome! Choose your language"
+    root_welcome_ru: "Добро пожаловать! Выберите Ваш язык"
+    root_button_en: "English - English"
+    root_button_ru: "Русский - Russian"
