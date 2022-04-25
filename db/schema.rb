@@ -68,7 +68,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_07_131516) do
     t.datetime "updated_at", null: false
     t.string "name", default: "", null: false
     t.string "country", default: "Российская Федерация", null: false
-    t.string "avatar_url", default: "https://raw.githubusercontent.com/Artur4ik/ask/main/app/assets/images/user.png", null: false
+    t.string "avatar_url", default: "https://raw.githubusercontent.com/Artur4ik/ask/master/app/assets/images/user.png", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
