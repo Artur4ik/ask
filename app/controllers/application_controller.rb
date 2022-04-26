@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     if params[:locale].nil?
-      country = Geocoder.search(request.remote_ip).first.country
-      case country
+      @ip_info = Geocoder.search(request.remote_ip).first
+      case @ip_info.country
       when "RU"
         I18n.locale = :ru
       when "BY"
@@ -12,7 +12,6 @@ class ApplicationController < ActionController::Base
       else
         I18n.locale = :en
       end
-
     else
       I18n.locale = params[:locale]
     end

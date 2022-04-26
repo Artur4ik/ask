@@ -1,0 +1,10 @@
+<style>
+   .shadow {
+    background: #fc0; /*fc0 Цвет фона */
+    box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
+    padding: 10px;
+   }
+</style>
+<body>
+<div class="shadow">
+<h4><%="#{t('application.language_notice')}"%>:</h4>IP: <%=@ip_info.data["ip"]%>, <%=@ip_info.data["city"]%>, <%=@ip_info.data["country"]%></div><br><br>
