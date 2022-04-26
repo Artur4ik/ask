@@ -17,8 +17,8 @@
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-right mb-md-0">
             <li><%=button_to "#{t('application.logo')}", questions_path, method: :get, class: "btn btn-warning"%></li>
           </ul>
-          <%=link_to "#{t('application.ru')}", "/ru/questions", class: "nav-link px-2 text-white" if (params[:locale] == "en")%>
-          <%=link_to "#{t('application.en')}", "/en/questions", class: "nav-link px-2 text-white" if (params[:locale] == "ru")%>
+          <%=link_to "#{t('application.ru')}", "/ru/questions", class: "nav-link px-2 text-white" if (I18n.locale != :ru)%>
+          <%=link_to "#{t('application.en')}", "/en/questions", class: "nav-link px-2 text-white" if (I18n.locale != :en)%>
           <div class="text-end">
             <%if user_signed_in? %>
 

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   scope "/:locale" do
     devise_for :users, controllers: { registrations: 'users/registrations' }
     get '/users/:id', to: 'questions#user'
-    get '/', to: 'questions#index'
+
     # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
     # Defines the root path route ("/")
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
     resources :questions
   end
-  root 'questions#root'
+  root 'questions#index'
 end
 
 Rails.application.routes.default_url_options[:locale] = I18n.locale

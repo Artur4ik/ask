@@ -2,7 +2,21 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
 
   def set_locale
-    I18n.locale = params[:locale]
+    if params[:locale].nil?
+      country = Geocoder.search(request.remote_ip).first.country
+      case country
+      when "RU"
+        I18n.locale = :ru
+      when "BY"
+        I18n.locale = :ru
+      else
+        I18n.locale = :en
+      end
+
+    else
+      I18n.locale = params[:locale]
+    end
+
   end
 
   def default_url_options
