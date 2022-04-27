@@ -1,0 +1,9 @@
+<details>
+  <summary><strong><%="#{t('questions.add_new_answer')}"%></strong></summary>
+  <%=form_for(:question, url: question_path, method: :put) do |form|%>
+    <p><h3><%= image_tag(current_user.avatar_url, width: 26, height: 26, class: "rounded-circle")%>&nbsp;<%=current_user.name%>:</h3></p>
+    <p><%=form.text_area :body, :cols => 50, :rows => 5%></p>
+    <p><%=form.submit "#{t('questions.answer')}", class: "btn btn-warning"%></p>
+  <% end %>
+</details>
+<hr>
