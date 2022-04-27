@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :questions
   end
   root 'questions#index'
+  get '/lang', to: 'application#change_language'
 end
 
 Rails.application.routes.default_url_options[:locale] = I18n.locale

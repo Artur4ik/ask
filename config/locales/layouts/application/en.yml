@@ -7,7 +7,6 @@ en:
     log_out: "Log out"
     sign_up: "Register"
     logo: "AllQuestions.ru"
-    ru: "🇷🇺 RU"
-    en: "🇺🇸 EN"
+    change_language: "Change language"
     motto: "ask your question and get answer right now!"
     language_notice: "Your language and country determined automatically by IP"
