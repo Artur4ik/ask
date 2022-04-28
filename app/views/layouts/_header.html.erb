@@ -17,7 +17,7 @@
             <%if user_signed_in? %>
 
               <table>
-                  <td><%=image_tag(User.find(current_user.id).avatar_url, width: 32, height: 32, class: "rounded-circle")%>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                  <td><%=link_to(image_tag(User.find(current_user.id).avatar_url, width: 32, height: 32, class: "rounded-circle"), user_registration_url + "/#{current_user.id}")%>&nbsp;&nbsp;&nbsp;</td>
                   <td><%=link_to current_user.name, user_registration_url + "/#{current_user.id}"%>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                   <td><%=button_to "#{t('application.log_out')}", destroy_user_session_path, method: :delete, class: "btn btn-outline-light me-2"%></td>
                 </tr>
