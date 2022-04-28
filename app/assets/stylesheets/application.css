@@ -13,3 +13,6 @@
  *= require_tree .
  *= require_self
  */
+ A {
+  text-decoration: none;
+ }
