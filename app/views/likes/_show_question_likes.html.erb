@@ -1,0 +1,7 @@
+<%@count = Like.where(target_id: @question.id, target_type: "Q", emoji: "👍").count%>
+<%="#{@count} " if @count > 0%>
+<%=user_signed_in? ? link_to("👍", likes_path(user_id: current_user.id, target_id: @question.id, target_type: "Q", emoji: "👍"), data: {"turbo-method": :post}) : "👍"%>
+
+<%@count = Like.where(target_id: @question.id, target_type: "Q", emoji: "💩").count%>
+<%="#{@count} " if @count > 0%>
+<%=user_signed_in? ? link_to("💩", likes_path(user_id: current_user.id, target_id: @question.id, target_type: "Q", emoji: "💩"), data: {"turbo-method": :post}) : "💩"%>

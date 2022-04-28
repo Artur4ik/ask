@@ -6,12 +6,16 @@
         <td><a href=<%=user_registration_url + "/#{question.user.id}"%>><%=image_tag(question.user.avatar_url, width: 80, height: 80, class: "rounded-circle")%></a></td>
         <td>&nbsp;</td>
         <td><h3>
-          <%if (question.answers.count == 0)%>
-            <%= image_tag("cancel.png", width: 25, height: 25) %>
-          <%else %>
+          <%if question.solved?%>
             <%= image_tag("ok.png", width: 25, height: 25) %>
+          <%else %>
+            <%= image_tag("cancel.png", width: 25, height: 25) %>
           <%end %>
-          <%=link_to "#{t('questions.question')} №#{question.id}", question_path(id: question.id, locale: I18n.locale) %> <%="#{t('questions.from')}"%> <%=link_to question.user.name, user_registration_url + "/#{question.user.id}"%></h3><%=question.body%><p align="left"><%=question.created_at.strftime("%d.%m.%Y, %H:%M")%></p></td>
+          <%=link_to "#{t('questions.question')} №#{question.id}", question_path(id: question.id, locale: I18n.locale) %> <%="#{t('questions.from')}"%> <%=link_to question.user.name, user_registration_url + "/#{question.user.id}"%></h3><%=question.body%><a align="left"><br><%=question.created_at.strftime("%d.%m.%Y, %H:%M")%><br><font size="4">
+          <%@question = question%>
+          <%=render 'likes/show_question_likes'%>
+          </font>
+          </a></td>
       </tr>
     </table>
     <hr>
