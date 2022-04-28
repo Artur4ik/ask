@@ -38,4 +38,11 @@ class QuestionsController < ApplicationController
 
     redirect_to questions_path
   end
+
+  def edit
+    question = Question.find(params[:id])
+    question.solved? ? question.solved = false : question.solved = true
+    question.save
+    redirect_to question_path(question.id)
+  end
 end
