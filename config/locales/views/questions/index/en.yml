@@ -6,3 +6,7 @@ en:
     question: "Question"
     from: "from"
     users: "Users"
+    question_created: "Question created"
+    question_deleted: "Question deleted"
+    question_status_changed: "Question status changed"
+    answer_added: "Answer added"

@@ -38,7 +38,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
     add_column :users, :name, :string, null: false, default: ""
     add_column :users, :country, :string, null: false, default: "Российская Федерация"
     add_column :users, :avatar_url, :string, null: false, default: "https://raw.githubusercontent.com/Artur4ik/ask/master/app/assets/images/user.png"
-    add_index :users, :email,                unique: true
     add_index :users, :reset_password_token, unique: true
 
     # add_index :devise, :confirmation_token,   unique: true

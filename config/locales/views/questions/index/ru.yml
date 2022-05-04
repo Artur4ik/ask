@@ -6,3 +6,7 @@ ru:
     question: "Вопрос"
     from: "от"
     users: "Пользователи"
+    question_created: "Вопрос создан"
+    question_deleted: "Вопрос удалён"
+    question_status_changed: "Статус вопроса изменён"
+    answer_added: "Ответ добавлен"

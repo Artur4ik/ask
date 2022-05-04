@@ -1,7 +1,20 @@
 <%@count = Like.where(target_id: @question.id, target_type: "Q", emoji: "👍").count%>
-<%="#{@count} " if @count > 0%>
-<%=user_signed_in? ? link_to("👍", likes_path(user_id: current_user.id, target_id: @question.id, target_type: "Q", emoji: "👍"), data: {"turbo-method": :post}) : "👍"%>
+<a id="like-count"><%="#{@count} " if @count > 0%></a>
+<%=user_signed_in? ? link_to("👍", likes_path(user_id: current_user.id, target_id: @question.id, target_type: "Q", emoji: "👍"), id: "like-btn", data: {"turbo-method": :post}) : "👍"%>
 
 <%@count = Like.where(target_id: @question.id, target_type: "Q", emoji: "💩").count%>
-<%="#{@count} " if @count > 0%>
-<%=user_signed_in? ? link_to("💩", likes_path(user_id: current_user.id, target_id: @question.id, target_type: "Q", emoji: "💩"), data: {"turbo-method": :post}) : "💩"%>
+<a id="dislike-count"><%="#{@count} " if @count > 0%></a>
+<%=user_signed_in? ? link_to("💩", likes_path(user_id: current_user.id, target_id: @question.id, target_type: "Q", emoji: "💩"), id: "dislike-btn", data: {"turbo-method": :post}) : "💩"%>
+
+<script>
+document.getElementById("like-btn").onclick = function() {
+  var count = parseInt(document.getElementById("like-count").innerHTML)
+  if (isNaN(count)) { count = 0; }
+  document.getElementById("like-count").innerHTML = count + 1
+}
+document.getElementById("dislike-btn").onclick = function() {
+  var count = parseInt(document.getElementById("dislike-count").innerHTML)
+  if (isNaN(count)) { count = 0; }
+  document.getElementById("dislike-count").innerHTML = count + 1
+}
+</script>
