@@ -1,34 +1,17 @@
 class LikesController < ApplicationController
+  before_action :create_likes_handler
+
+  def create_likes_handler
+    @likes_handler = Handlers::LikesHandler.new(strong_params)
+  end
+
   def create
-    likes_on_target =
-    Like.where(user_id: params[:user_id],
-               target_id: params[:target_id],
-               target_type: params[:target_type],
-               emoji: params[:emoji])
-
-    if likes_on_target.empty?
-      Like.create(user_id: params[:user_id],
-                  target_id: params[:target_id],
-                  target_type: params[:target_type],
-                  emoji: params[:emoji])
-      index
-    else
-      destroy
-    end
+    render(json: @likes_handler.perform)
   end
 
-  def destroy
-    Like.where(
-      user_id: params[:user_id],
-      target_id: params[:target_id],
-      target_type: params[:target_type],
-      emoji: params[:emoji]).delete_all
-      index
-  end
+  private
 
-  def index
-    render json: Like.where(
-      target_id: params[:target_id],
-      target_type: params[:target_type])
+  def strong_params
+    params.permit(:user_id, :target_id, :target_type, :emoji)
   end
 end

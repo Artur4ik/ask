@@ -12,7 +12,7 @@ module Askme
     config.load_defaults 7.0
     config.i18n.default_locale = :en
     config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
-
+    config.eager_load_paths += %W(#{config.root}/app/services/handlers)
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
