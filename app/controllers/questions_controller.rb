@@ -34,7 +34,7 @@ class QuestionsController < ApplicationController
     is_body_empty = params[:answer][:body].blank?
 
     if (is_valid_user && is_valid_question && !is_body_empty)
-      flash[:primary] = t('questions.answer_added')
+      flash[:primary] = t('questions.answer_created')
       redirect_to question_path(id: params[:id])
     else
       flash[:danger] = "Пользователь с таким id не существует" unless is_valid_user
