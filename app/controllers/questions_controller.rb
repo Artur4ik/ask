@@ -9,9 +9,8 @@ class QuestionsController < ApplicationController
   def create
     messages = @questions_handler.add_question(params[:question][:body],
                                                params[:question][:user_id])
-    messages.each do |message, alert|
-      flash[alert] = t(message)
-    end
+
+    show_messages(messages)
 
     redirect_to(question_path(Question.last.id)) and return if messages.success?
     redirect_to(new_question_path) unless messages.success?
@@ -26,9 +25,8 @@ class QuestionsController < ApplicationController
     messages = @questions_handler.add_answer(params[:answer][:body],
                                                params[:answer][:user_id],
                                                params[:id])
-    messages.each do |message, alert|
-      flash[alert] = t(message)
-    end
+
+    show_messages(messages)
 
     redirect_to(question_path(id: params[:id]))
   end
@@ -44,9 +42,7 @@ class QuestionsController < ApplicationController
   def destroy
     messages = @questions_handler.delete_question(params[:id])
 
-    messages.each do |message, alert|
-      flash[alert] = t(message)
-    end
+    show_messages(messages)
 
     redirect_to(questions_path)
   end
@@ -54,10 +50,16 @@ class QuestionsController < ApplicationController
   def edit
     messages = @questions_handler.change_solved_status(params[:id])
 
-    messages.each do |message, alert|
-      flash[alert] = t(message)
-    end
+    show_messages(messages)
 
     redirect_to(question_path(id: params[:id]))
+  end
+
+  private
+
+  def show_messages(message_hash)
+    message_hash.each do |message, alert|
+      flash[alert] = t(message)
+    end
   end
 end
