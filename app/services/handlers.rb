@@ -5,6 +5,17 @@ module Handlers
     end
 
     def perform
+      return "User not exist" unless User.exists?(id: @like['user_id'])
+
+      case @like['target_type']
+      when 'Q'
+        return "Question not exist" unless Question.exists?(id: @like['target_id'])
+      when 'A'
+        return "Answer not exist" unless Answer.exists?(id: @like['target_id'])
+      else
+        return "Unknown target"
+      end
+
       Like.exists?(@like) ? Like.find_by(@like).destroy : Like.create(@like)
       Like.where(target_id: @like['target_id'], target_type: @like['target_type'], emoji: @like['emoji'])
     end

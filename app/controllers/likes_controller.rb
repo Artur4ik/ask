@@ -7,12 +7,14 @@ class LikesController < ApplicationController
   end
 
   def create
+    render(json: "Error") if (params['user_id'].to_i != current_user.id)
     render(json: @likes_handler.perform)
   end
 
   private
 
   def strong_params
+    params.delete(:locale)
     params.permit(:user_id, :target_id, :target_type, :emoji)
   end
 end
