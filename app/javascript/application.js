@@ -3,6 +3,17 @@
 //= require jquery_ujs
 //import "@hotwired/turbo-rails"
 import "controllers"
+import { createPicker } from 'picmo';
+
+const rootEl = document.querySelector('.pickerContainer');
+
+if(rootEl != null)
+{
+  const picker = createPicker({ rootElement: rootEl});
+  picker.addEventListener('emoji:select', event => {
+    document.getElementById(rootEl.getAttribute("target")).value = document.getElementById(rootEl.getAttribute("target")).value + event.emoji;
+  });
+}
 
 $(".like-btn").click(function() {
   var emoji = $(this).html().substring($(this).html().length-2);
