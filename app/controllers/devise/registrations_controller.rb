@@ -20,11 +20,11 @@ class Devise::RegistrationsController < DeviseController
     yield resource if block_given?
     if resource.persisted?
       if resource.active_for_authentication?
-        set_flash_message! :notice, :signed_up
+        flash[:primary] = t('devise.registrations.signed_up')
         sign_up(resource_name, resource)
         respond_with resource, location: questions_path
       else
-        set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
+        flash[:primary] = t("devise.registrations.signed_up_but_#{resource.inactive_message}")
         expire_data_after_sign_in!
         respond_with resource, location: after_inactive_sign_up_path_for(resource)
       end
@@ -51,7 +51,7 @@ class Devise::RegistrationsController < DeviseController
     resource_updated = update_resource(resource, account_update_params)
     yield resource if block_given?
     if resource_updated
-      set_flash_message_for_update(resource, prev_unconfirmed_email)
+      flash[:primary] = t('devise.registrations.updated')
       bypass_sign_in resource, scope: resource_name if sign_in_after_change_password?
 
       respond_with resource, location: after_update_path_for(resource)
