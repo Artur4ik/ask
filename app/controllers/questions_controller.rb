@@ -32,7 +32,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = Question.find(params[:id])
+    @question = Question.find(params[:id]).increment!(:views)
   end
 
   def user
@@ -40,6 +40,7 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
+    render(html: "Error") and return if (Question.find(params[:id]).user.id != current_user.id)
     messages = @questions_handler.delete_question(params[:id])
 
     show_messages(messages)
@@ -48,6 +49,7 @@ class QuestionsController < ApplicationController
   end
 
   def edit
+    render(html: "Error") and return if (Question.find(params[:id]).user.id != current_user.id)
     messages = @questions_handler.change_solved_status(params[:id])
 
     show_messages(messages)

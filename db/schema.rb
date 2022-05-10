@@ -62,6 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_28_104313) do
   create_table "questions", force: :cascade do |t|
     t.text "body"
     t.boolean "solved", default: false
+    t.integer "views", default: 0
     t.integer "user_id"
     t.integer "true"
     t.datetime "created_at", null: false
