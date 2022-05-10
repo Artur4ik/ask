@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   scope "/:locale" do
     devise_for :users, controllers: { registrations: 'users/registrations' }
     get '/users/:id', to: 'questions#user'
+    post '/likes', to: 'likes#create'
     resources :questions
   end
-  post 'likes', to: 'likes#create'
   root 'questions#index'
   get '/lang', to: 'application#change_language'
 end

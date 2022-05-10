@@ -1,4 +1,5 @@
 class LikesController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :create_likes_handler
 
   def create_likes_handler
