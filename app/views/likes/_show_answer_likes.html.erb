@@ -1,7 +1,6 @@
 <%@count = Like.where(target_id: @answer.id, target_type: "A", emoji: "👍").count%>
-<%="#{@count} " if @count > 0%>
-<%=user_signed_in? ? link_to("👍", likes_path(user_id: current_user.id, target_id: @answer.id, target_type: "A", emoji: "👍"), data: {"turbo-method": :post}) : "👍"%>
+
+<%=user_signed_in? ? link_to("#{@count} 👍", "javascript:void(0)", id: "#{@answer.id}", class: "like-btn", data: { user_id: current_user.id, target_id: @answer.id, target_type: "A", emoji: "👍", url_path: likes_path, method: :post}) : "#{@count} 👍"%>
 
 <%@count = Like.where(target_id: @answer.id, target_type: "A", emoji: "💩").count%>
-<%="#{@count} " if @count > 0%>
-<%=user_signed_in? ? link_to("💩", likes_path(user_id: current_user.id, target_id: @answer.id, target_type: "A", emoji: "💩"), data: {"turbo-method": :post}) : "💩"%>
+<%=user_signed_in? ? link_to("#{@count} 💩", "javascript:void(0)", id: "#{@answer.id}", class: "like-btn", data: { user_id: current_user.id, target_id: @answer.id, target_type: "A", emoji: "💩", url_path: likes_path, method: :post}): "#{@count} 💩"%>

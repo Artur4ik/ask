@@ -6,7 +6,7 @@ module Handlers
 
     def perform
       Like.exists?(@like) ? Like.find_by(@like).destroy : Like.create(@like)
-      Like.where(target_id: @like['target_id'], target_type: @like['target_type'])
+      Like.where(target_id: @like['target_id'], target_type: @like['target_type'], emoji: @like['emoji'])
     end
   end
 

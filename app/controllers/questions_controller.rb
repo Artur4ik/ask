@@ -23,8 +23,8 @@ class QuestionsController < ApplicationController
 
   def update
     messages = @questions_handler.add_answer(params[:answer][:body],
-                                               params[:answer][:user_id],
-                                               params[:id])
+                                             params[:answer][:user_id],
+                                             params[:id])
 
     show_messages(messages)
 
