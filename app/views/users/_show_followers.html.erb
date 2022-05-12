@@ -1,7 +1,12 @@
+<hr><h4>
 <%unless @users.count == 0 %>
-  <h4><%="#{t('questions.users')}"%>:
+
     <%@users.each do |user|%>
       <a href=<%=user_questions_path(user_id: user.id)%>><%=image_tag(user.avatar_url, width: 27, height: 27, class: "rounded-circle")%></a>&nbsp;<%=link_to "#{user.name}", user_questions_path(user_id: user.id)%>&nbsp;
+      <hr>
     <%end %>
-    <hr></h4>
-<%end %>
+
+<%else %>
+Нет пользователей<hr>
+<%end%>
+</h4>

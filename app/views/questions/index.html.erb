@@ -1,5 +1,1 @@
-<%=render 'questions/show_questions'%>
-
-<%=render 'questions/show_users'%>
-
-<%=button_to(t('questions.add_new_question'), new_question_path, method: :get, class: "btn btn-warning") if user_signed_in?%>
+<%=render "questions/show_#{(user_signed_in? && (current_user.id == params[:user_id].to_i)) ? 'my' : 'user'}_profile"%>

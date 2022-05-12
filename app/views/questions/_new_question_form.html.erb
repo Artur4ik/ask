@@ -1,9 +1,9 @@
 <table>
   <tr>
   <td>
-<%= form_for(:question, url: questions_path) do |form| %>
+<%= form_for(:question, url: user_questions_path) do |form| %>
   <p><h3><%= image_tag(User.find(current_user.id).avatar_url, width: 80, height: 80, class: "rounded-circle")%>&nbsp;<%=t('questions.question')%> <%=t('questions.from')%> <%=current_user.name%>:</h3></p>
-  <p><%=form.text_area :body, :cols => 50, :rows => 12%></p>
+  <p><%=form.text_area :body, text: "", placeholder: t('questions.question_input'), :cols => 50, :rows => 12%></p>
      <%=form.hidden_field :user_id, value: current_user.id %>
   <p><%=form.submit t('user.add'), class: "btn btn-warning"%></p>
 <% end %>

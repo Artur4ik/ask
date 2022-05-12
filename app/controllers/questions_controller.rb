@@ -12,13 +12,12 @@ class QuestionsController < ApplicationController
 
     show_messages(messages)
 
-    redirect_to(question_path(Question.last.id)) and return if messages.success?
+    redirect_to(user_questions_path) and return if messages.success?
     redirect_to(new_question_path) unless messages.success?
   end
 
   def index
-    @questions = Question.all
-    @users = User.all
+    @questions = Question.where(user_id: params[:user_id])
   end
 
   def update
@@ -28,7 +27,7 @@ class QuestionsController < ApplicationController
 
     show_messages(messages)
 
-    redirect_to(question_path(id: params[:id]))
+    redirect_to(user_question_path(id: params[:id], user_id: params[:answer][:user_id]))
   end
 
   def show
@@ -39,13 +38,17 @@ class QuestionsController < ApplicationController
     @questions = Question.where(user_id: params[:id])
   end
 
+  def feed
+
+  end
+
   def destroy
     render(html: "Error") and return if (Question.find(params[:id]).user.id != current_user.id)
     messages = @questions_handler.delete_question(params[:id])
 
     show_messages(messages)
 
-    redirect_to(questions_path)
+    redirect_to(user_questions_path)
   end
 
   def edit

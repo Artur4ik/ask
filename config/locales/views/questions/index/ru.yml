@@ -14,3 +14,5 @@ ru:
     question_body_empty: "Вопрос не может быть пустым"
     question_not_exist: "Вопрос с таким id не существует"
     answer_body_empty: "Ответ не может быть пустым"
+    question_input: "Введите ваш вопрос"
+    answer_input: "Введите ваш ответ"

@@ -3,9 +3,9 @@
   <table>
   <tr>
   <td>
-  <%=form_for(:answer, url: question_path, method: :put) do |form|%>
+  <%=form_for(:answer, url: user_question_path(id: @question.id, user_id: @question.user.id), method: :put) do |form|%>
     <p><h3><%= image_tag(current_user.avatar_url, width: 26, height: 26, class: "rounded-circle")%>&nbsp;<%=current_user.name%>:</h3></p>
-    <p><%=form.text_area :body, :cols => 50, :rows => 12%></p>
+    <p><%=form.text_area :body, text: "", placeholder: t('questions.answer_input'), :cols => 50, :rows => 12%></p>
        <%=form.hidden_field :user_id, value: current_user.id %>
     <p><%=form.submit t('questions.answer'), class: "btn btn-warning"%></p>
   <% end %>

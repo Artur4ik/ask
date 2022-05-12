@@ -1,27 +1,21 @@
 <table>
   <hr>
   <tr>
-    <td><a href=<%="#{User.find(params[:id]).avatar_url}"%>><%=image_tag(User.find(params[:id]).avatar_url, width: 128, height: 128, class: "rounded-circle")%></a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td><%="#{t('user.name')}"%>:<h3><%=User.find(params[:id]).name%></h3><%="#{t('user.sign_up_date')}"%>:<br><h3><%=User.find(params[:id]).created_at.strftime("%d.%m.%Y")%></h3></td>
+    <td><a href=<%="#{User.find(params[:user_id]).avatar_url}"%>><%=image_tag(User.find(params[:user_id]).avatar_url, width: 128, height: 128, class: "rounded-circle")%></a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><%="#{t('user.name')}"%>:<h3><%=User.find(params[:user_id]).name%></h3><%="#{t('user.sign_up_date')}"%>:<br><h3><%=User.find(params[:user_id]).created_at.strftime("%d.%m.%Y")%></h3></td>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td><%="#{t('user.email')}"%>:<h3><%=User.find(params[:id]).email%><%= image_tag("ok.png") %></h3><%="#{t('user.country')}"%>:
+    <td><%="#{t('user.email')}"%>:<h3><%=User.find(params[:user_id]).email%><%= image_tag("ok.png") %></h3><%="#{t('user.country')}"%>:
       <h3>
-        <%if User.find(params[:id]).country == "Российская Федерация"%>
+        <%if User.find(params[:user_id]).country == "Российская Федерация"%>
           🇷🇺
           <%end %>
-        <%if User.find(params[:id]).country == "Республика Беларусь"%>
+        <%if User.find(params[:user_id]).country == "Республика Беларусь"%>
           🇧🇾
         <%end %>
-        <%if User.find(params[:id]).country == "Украина"%>
+        <%if User.find(params[:user_id]).country == "Украина"%>
           🇺🇦
         <%end %>
-        <%=User.find(params[:id]).country%>
+        <%=User.find(params[:user_id]).country%>
       </h3></td>
-    <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td>
-      <%if (user_signed_in?  && current_user.id == User.find(params[:id]).id)%>
-        <a href=<%=edit_user_registration_path%>><%= image_tag("edit.png", width: 32, height: 32) %></a>
-        <%end %>
-    </td>
-  </tr>
+  </tr><tr><td></td></tr>
 </table>

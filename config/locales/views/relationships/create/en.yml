@@ -1,0 +1,6 @@
+en:
+  relation:
+    create: "Your have successfuly subscribed for this user"
+    destroy: "Your have successfuly unsubscribed from this user"
+    followers: "Followers"
+    following: "Following"

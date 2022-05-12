@@ -19,6 +19,9 @@ class ApplicationController < ActionController::Base
 
   end
 
+  def index
+  end
+
   def change_language
 
   end
@@ -28,19 +31,19 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    questions_path
+    user_feed_path
   end
 
   def after_sign_out_path_for(resource)
-    questions_path
+    root_path
   end
 
   def after_sign_up_path_for(resource)
-    questions_path
+    user_feed_path
   end
 
   def after_update_path_for(resource)
-    questions_path
+    user_feed_path
   end
 
 end

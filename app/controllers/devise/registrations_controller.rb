@@ -22,7 +22,7 @@ class Devise::RegistrationsController < DeviseController
       if resource.active_for_authentication?
         flash[:primary] = t('devise.registrations.signed_up')
         sign_up(resource_name, resource)
-        respond_with resource, location: questions_path
+        respond_with resource, location: user_feed_path
       else
         flash[:primary] = t("devise.registrations.signed_up_but_#{resource.inactive_message}")
         expire_data_after_sign_in!
