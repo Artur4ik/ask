@@ -17,5 +17,11 @@
         <%end %>
         <%=User.find(params[:user_id]).country%>
       </h3></td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td>
+      <%if (user_signed_in?  && current_user.id == params[:user_id].to_i)%>
+        <a href=<%=edit_user_registration_path%>><%= image_tag("edit.png", width: 32, height: 32) %></a>
+        <%end %>
+    </td>
   </tr><tr><td></td></tr>
 </table>

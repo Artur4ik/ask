@@ -1,8 +1,8 @@
-<h3>Лента активности</h3>
+<h3><%=t('relation.feed')%></h3>
 
 <%if (user_signed_in? && (current_user.following.count == 0))%>
 <hr>
-<h3>Вы ни на кого не подписаны. Перейдите на <%=link_to("главную страницу", root_path)%> и подпишитесь на пользователей, чтобы их новые вопросы попали к вам в ленту!</h3>
+<h3><%=t('relation.no_following')%>!</h3>
 <hr>
 <%else%>
 <%=render 'questions/show_questions'%>

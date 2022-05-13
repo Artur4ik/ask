@@ -5,13 +5,15 @@ Rails.application.routes.draw do
       get :following, :followed
       resources :questions
     end
-
-    get '/user/feed', to: "users#feed"
-    post '/likes', to: 'likes#create'
     resources :relationships, only: [:create, :destroy]
+    get '/user/feed', to: "users#feed"
+    get '/home', to: "pages#home"
+    get '/about', to: "pages#about"
+    post '/likes', to: 'likes#create'
+    get '/lang', to: 'pages#language'
   end
-  root 'users#index'
-  get '/lang', to: 'application#change_language'
+  root "pages#home"
+
 end
 
 Rails.application.routes.default_url_options[:locale] = I18n.locale

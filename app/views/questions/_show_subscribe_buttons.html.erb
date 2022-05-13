@@ -3,18 +3,18 @@
 <%if(user_signed_in? && (current_user.id != params[:user_id].to_i))%>
 <td>&nbsp;&nbsp;</td>
 <td>
-<%=button_to("+Подписаться", relationships_path, class: "btn btn-outline-success btn-sm", method: :post, params: {followed_id: params[:user_id]}) unless(current_user.following?(User.find(params[:user_id])))%>
-<%=button_to("-Отписаться", relationship_path(id: current_user.active_relationships.find_by(followed_id: params[:user_id])), class: "btn btn-outline-danger btn-sm", method: :delete) if(current_user.following?(User.find(params[:user_id])))%>
+<%=button_to(t('relation.follow'), relationships_path, class: "btn btn-outline-success btn-sm", method: :post, params: {followed_id: params[:user_id]}) unless(current_user.following?(User.find(params[:user_id])))%>
+<%=button_to(t('relation.unfollow'), relationship_path(id: current_user.active_relationships.find_by(followed_id: params[:user_id])), class: "btn btn-outline-danger btn-sm", method: :delete) if(current_user.following?(User.find(params[:user_id])))%>
 </td>
 <%end%>
 
 <td>&nbsp;&nbsp;</td>
 <td>
-<%=button_to("Подписок: #{User.find(params[:user_id]).following.count}", user_following_path(user_id: params[:user_id]), class: "btn btn-outline-primary btn-sm", method: :get)%>
+<%=button_to("#{t('relation.following')}: #{User.find(params[:user_id]).following.count}", user_following_path(user_id: params[:user_id]), class: "btn btn-outline-primary btn-sm", method: :get)%>
 </td>
 <td>&nbsp;&nbsp;</td>
 <td>
-<%=button_to("Подписчиков: #{User.find(params[:user_id]).followers.count}", user_followed_path(user_id: params[:user_id]), class: "btn btn-outline-primary btn-sm", method: :get)%>
+<%=button_to("#{t('relation.followers')}: #{User.find(params[:user_id]).followers.count}", user_followed_path(user_id: params[:user_id]), class: "btn btn-outline-primary btn-sm", method: :get)%>
 </td>
 </tr>
 </table>

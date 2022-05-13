@@ -3,6 +3,7 @@ ru:
     add_new_question: "Новый вопрос"
     new_questions: "Новые вопросы"
     no_questions: "Нет вопросов"
+    no_users: "Нет пользователей"
     question: "Вопрос"
     from: "от"
     users: "Пользователи"

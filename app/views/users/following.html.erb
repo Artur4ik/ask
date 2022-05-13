@@ -1,6 +1,6 @@
 <%=render 'questions/show_user_info'%>
 <%=render 'questions/show_subscribe_buttons'%>
-<hr><h3>Подписки пользователя:</h3>
+<hr><h3><%=t('relation.user_following')%>:</h3>
 <%=render 'users/show_followers'%>
 
 <%=button_to "#{t('application.main_page')}", user_questions_path, method: :get, class: "btn btn-warning"%>

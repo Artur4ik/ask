@@ -12,9 +12,9 @@ class ApplicationController < ActionController::Base
       else
         I18n.locale = :en
       end
-      flash[:primary] = "#{t('application.language_notice')}: #{@ip_info.data["ip"]}, #{@ip_info.data['city']}, #{@ip_info.data['country']}"
+      #flash[:primary] = "#{t('application.language_notice')}: #{@ip_info.data["ip"]}, #{@ip_info.data['city']}, #{@ip_info.data['country']}"
     else
-      I18n.locale = params[:locale]
+      I18n.locale = params[:locale] if ((params[:locale] == "ru") || (params[:locale] == "en"))
     end
 
   end

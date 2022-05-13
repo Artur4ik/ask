@@ -4,7 +4,7 @@
   <summary><strong><%=t('user.add_question')%></strong></summary>
   <%=form_for(:question, url: user_questions_path) do |form|%>
     <p><%= image_tag(current_user.avatar_url, width: 30, height: 30, class: "rounded-circle")%>&nbsp;
-    <%=form.text_field :body, text: "", placeholder: t('questions.question_input')%>&nbsp;
+    <%=form.text_field :body, text: "", placeholder: t('questions.question_input'), class:"form-control"%>&nbsp;
     <%=form.submit(t('user.add'), class: "btn btn-warning")%></p>
   <% end %>
   </details>
