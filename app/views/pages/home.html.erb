@@ -21,7 +21,9 @@
       <div class="card-body">
         <h5 class="card-title"><%=image_tag("ok.png")%>&nbsp;<%=t('home.sign_up_now')%></h5>
         <p class="card-text"><%=t('home.sign_up_rights')%></p>
+        <%unless user_signed_in?%>
         <a href=<%=new_user_registration_path%> class="btn btn-warning"><%=t('home.sign_up')%></a>&nbsp;&nbsp;<%=t('home.or')%>&nbsp;&nbsp;<a href=<%=new_user_session_path%> class="btn btn-warning"><%=t('home.sign_in')%></a>
+        <%end%>
       </div>
     </div>
   </div>
@@ -30,7 +32,9 @@
       <div class="card-body">
         <h5 class="card-title"><%=image_tag("ok.png")%>&nbsp;<%=t('home.guest')%></h5>
         <p class="card-text"><%=t('home.guest_rights')%></p><br>
+        <%unless user_signed_in?%>
         <a href=<%=users_path%> class="btn btn-warning"><%=t('home.watch')%></a>
+        <%end%>
       </div>
     </div>
   </div>

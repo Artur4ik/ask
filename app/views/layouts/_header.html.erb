@@ -10,7 +10,7 @@
             <li><%=link_to t('application.about'), about_path, class: "nav-link px-2 text-white"%></li>
           </ul>
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li><%=button_to t('application.logo'), home_path, method: :get, class: "btn btn-warning"%></li>
+            <li><%=button_to t('application.logo'), home_path, method: :get, params: {stay: true}, class: "btn btn-warning"%></li>
           </ul>
           <%=link_to t('application.change_language'), lang_path, class: "nav-link px-2 text-white"%>
           <div class="text-end">
