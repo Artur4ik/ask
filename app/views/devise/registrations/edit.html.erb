@@ -1,7 +1,5 @@
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= form_for(resource, as: resource_name, url: user_registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-
-
   <table>
     <hr>
     <tr>
@@ -22,6 +20,6 @@
       <td><%= f.submit "#{t('devise.edit_form.save')}", class: "btn btn-warning"%></td>
 <% end %>
       <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-      <td><%=button_to "#{t('application.main_page')}", questions_path, method: :get, class: "btn btn-warning"%></td>
+      <td><%=button_to t('application.main_page'), user_feed_path, method: :get, class: "btn btn-warning"%></td>
     </tr>
   </table>

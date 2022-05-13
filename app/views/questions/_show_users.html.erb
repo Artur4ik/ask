@@ -1,7 +1,8 @@
 <%unless @users.count == 0 %>
+<hr>
   <h4><%="#{t('questions.users')}"%>:
     <%@users.each do |user|%>
-      <a href=<%=user_registration_url + "/#{user.id}"%>><%=image_tag(user.avatar_url, width: 27, height: 27, class: "rounded-circle")%></a>&nbsp;<%=link_to "#{user.name}", user_registration_url + "/#{user.id}"%>&nbsp;
+      <a href=<%=user_questions_path(user_id: user.id)%>><%=image_tag(user.avatar_url, width: 27, height: 27, class: "rounded-circle")%></a>&nbsp;<%=link_to "#{user.name}", user_questions_path(user_id: user.id)%>&nbsp;
     <%end %>
     <hr></h4>
 <%end %>

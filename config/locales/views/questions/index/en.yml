@@ -3,6 +3,7 @@ en:
     add_new_question: "New question"
     new_questions: "New questions"
     no_questions: "No questions"
+    no_users: "No users"
     question: "Question"
     from: "from"
     users: "Users"
@@ -14,3 +15,5 @@ en:
     question_body_empty: "Question should be not empty"
     question_not_exist: "Question with same id not exist"
     answer_body_empty: "Reply should be not empty"
+    question_input: "Write your question"
+    answer_input: "Write your answer"

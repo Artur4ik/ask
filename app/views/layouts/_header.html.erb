@@ -2,23 +2,23 @@
       <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li><%=link_to "#{t('application.main_page')}", questions_path, class: "nav-link px-2 text-white"%></li>
+            <li><%=link_to t('application.main_page'), user_signed_in? ? users_path : root_path, class: "nav-link px-2 text-white"%></li>
             <%if user_signed_in? %>
-            <li><%=link_to "#{t('application.my_questions')}", user_registration_url + "/#{current_user.id}", class: "nav-link px-2 text-white"%></li>
-            <li><%=link_to "#{t('application.add_question')}", new_question_path, class: "nav-link px-2 text-white"%></li>
+            <li><%=link_to t('application.my_feed'), user_feed_path, class: "nav-link px-2 text-white"%></li>
+            <li><%=link_to t('application.add_question'), new_user_question_path(user_id: current_user.id), class: "nav-link px-2 text-white"%></li>
             <%end %>
+            <li><%=link_to t('application.about'), about_path, class: "nav-link px-2 text-white"%></li>
           </ul>
-
-          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-right mb-md-0">
-            <li><%=button_to "#{t('application.logo')}", questions_path, method: :get, class: "btn btn-warning"%></li>
+          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <li><%=button_to t('application.logo'), home_path, method: :get, class: "btn btn-warning"%></li>
           </ul>
-          <%=link_to "#{t('application.change_language')}", "/lang", class: "nav-link px-2 text-white"%>
+          <%=link_to t('application.change_language'), lang_path, class: "nav-link px-2 text-white"%>
           <div class="text-end">
             <%if user_signed_in? %>
 
               <table>
-                  <td><%=link_to(image_tag(User.find(current_user.id).avatar_url, width: 32, height: 32, class: "rounded-circle"), user_registration_url + "/#{current_user.id}")%>&nbsp;&nbsp;&nbsp;</td>
-                  <td><%=link_to current_user.name, user_registration_url + "/#{current_user.id}"%>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                  <td><%=link_to(image_tag(User.find(current_user.id).avatar_url, width: 32, height: 32, class: "rounded-circle"), user_questions_path(user_id: current_user.id))%>&nbsp;&nbsp;&nbsp;</td>
+                  <td><%=link_to current_user.name, user_questions_path(user_id: current_user.id)%>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                   <td><%=button_to "#{t('application.log_out')}", destroy_user_session_path, method: :delete, class: "btn btn-outline-light me-2"%></td>
                 </tr>
               </table>

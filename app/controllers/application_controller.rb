@@ -12,11 +12,14 @@ class ApplicationController < ActionController::Base
       else
         I18n.locale = :en
       end
-      flash[:primary] = "#{t('application.language_notice')}: #{@ip_info.data["ip"]}, #{@ip_info.data['city']}, #{@ip_info.data['country']}"
+      #flash[:primary] = "#{t('application.language_notice')}: #{@ip_info.data["ip"]}, #{@ip_info.data['city']}, #{@ip_info.data['country']}"
     else
-      I18n.locale = params[:locale]
+      I18n.locale = params[:locale] if ((params[:locale] == "ru") || (params[:locale] == "en"))
     end
 
+  end
+
+  def index
   end
 
   def change_language
@@ -28,19 +31,19 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    questions_path
+    user_feed_path
   end
 
   def after_sign_out_path_for(resource)
-    questions_path
+    root_path
   end
 
   def after_sign_up_path_for(resource)
-    questions_path
+    user_feed_path
   end
 
   def after_update_path_for(resource)
-    questions_path
+    user_feed_path
   end
 
 end

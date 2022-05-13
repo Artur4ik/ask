@@ -1,0 +1,42 @@
+<br>
+<h2 align="center"><%=t('about.logo_1')%></h2>
+<br>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col">
+    <div class="card h-100">
+      <h1 align="center"><br><%=Question.count%>&nbsp;&nbsp;<%=image_tag("question.png", width: 50, height: 50)%></h1>
+      <div class="card-body">
+        <h5 align="center" class="card-title"><%=t('about.questions')%></h5>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <h1 align="center"><br><%=Answer.count%>&nbsp;&nbsp;<%=image_tag("ok_about.png", width: 50, height: 50)%></h1>
+      <div class="card-body">
+        <h5 align="center" class="card-title"><%=t('about.answers')%></h5>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <h1 align="center"><br><%=User.count%>&nbsp;&nbsp;<%=image_tag("user.png", width: 50, height: 50)%></h1>
+      <div class="card-body">
+        <h5 align="center" class="card-title"><%=t('about.users')%></h5>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br><br>
+<h2 align="center"><%=t('about.most_popular_user')%></h2><br><br>
+<div align="center">
+<%=image_tag(@user.avatar_url, width: 128, height: 128, class: "rounded-circle")%>
+<h4><%=link_to(@user.name, user_questions_path(user_id: @user.id))%></h4>
+<span class="badge bg-warning text-dark"><%=t('about.questions').capitalize%>: <%=Question.where(user_id: @user.id).count%></span>&nbsp;&nbsp;<span class="badge bg-warning text-dark"><%=t('about.answers').capitalize%>: <%=Answer.where(user_id: @user.id).count%></span>&nbsp;&nbsp;<span class="badge bg-warning text-dark"><%=t('about.likes').capitalize%>: <%=Like.where(user_id: @user.id).count%></span>
+</div>
+
+<br><br><br>
+<h2 align="center"><%=t('about.most_popular_question')%></h2><br>
+<div align="center">
+<%=render 'questions/show_questions'%>
+</div>

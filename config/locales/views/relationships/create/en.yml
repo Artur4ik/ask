@@ -1,0 +1,12 @@
+en:
+  relation:
+    create: "Your have successfuly subscribed for this user"
+    destroy: "Your have successfuly unsubscribed from this user"
+    followers: "Followers"
+    following: "Following"
+    follow: "Subscribe"
+    unfollow: "Unsubscribe"
+    user_followers: "User followers"
+    user_following: "User following"
+    feed: "My feed"
+    no_following: "You are not subscribed to anyone. Subscribe to users so that their new questions get into your feed"

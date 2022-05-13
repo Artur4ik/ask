@@ -22,7 +22,7 @@ class Devise::RegistrationsController < DeviseController
       if resource.active_for_authentication?
         flash[:primary] = t('devise.registrations.signed_up')
         sign_up(resource_name, resource)
-        respond_with resource, location: questions_path
+        respond_with resource, location: user_feed_path
       else
         flash[:primary] = t("devise.registrations.signed_up_but_#{resource.inactive_message}")
         expire_data_after_sign_in!
@@ -53,7 +53,6 @@ class Devise::RegistrationsController < DeviseController
     if resource_updated
       flash[:primary] = t('devise.registrations.updated')
       bypass_sign_in resource, scope: resource_name if sign_in_after_change_password?
-
       respond_with resource, location: after_update_path_for(resource)
     else
       clean_up_passwords resource

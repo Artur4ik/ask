@@ -1,9 +1,9 @@
 <table>
   <tr>
     <%if ((user_signed_in?) && (@question.user.id == current_user.id))%>
-    <td><%=button_to(t('questions.delete_question'), question_path(@question.id), method: :delete, class: "btn btn-warning")%></td>
+    <td><%=button_to(t('questions.delete_question'), user_question_path(id: @question.id, user_id: @question.user.id), method: :delete, class: "btn btn-danger")%></td>
       <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <%end%>
-    <td><%=button_to(t('application.main_page'), questions_path, method: :get, class: "btn btn-warning")%></td>
+    <td><%=button_to(t('application.main_page'), user_questions_path, method: :get, class: "btn btn-warning")%></td>
   </tr>
 </table>

@@ -1,0 +1,11 @@
+<h3><%=t('relation.feed')%></h3>
+
+<%if (user_signed_in? && (current_user.following.count == 0))%>
+<hr>
+<h3><%=t('relation.no_following')%>!</h3>
+<hr>
+<%else%>
+<%=render 'questions/show_questions'%>
+
+<%=render 'questions/show_users'%>
+<%end%>
