@@ -9,7 +9,11 @@
       <%else%>
         <%=image_tag(@question.solved? ? "ok.png" : "cancel.png", width: 25, height: 25)%>
       <%end%>
-      <%= t('questions.question')%> №<%=@question.id%> <%=t('questions.from') %> <%= link_to(@question.user.name, user_questions_path(user_id: @question.user.id, locale: I18n.locale)) %></h3><%= @question.body %><a align="left"><br>
+      <%= t('questions.question')%> №<%=@question.id%> <%=t('questions.from') %> <%= link_to(@question.user.name, user_questions_path(user_id: @question.user.id, locale: I18n.locale)) %>
+
+      &nbsp;<%=link_to(image_tag("delete.png"), user_question_path(id: @question.id, user_id: @question.user.id), data: {method: :delete}) if (@question.user.id == current_user.id)%>
+
+      </h3><%= @question.body %><a align="left"><br>
       <%= @question.created_at.strftime("%d.%m.%Y, %H:%M") %>
       <br><font size="4">
       <%=render 'likes/show_question_likes'%>

@@ -13,11 +13,11 @@ class QuestionsController < ApplicationController
     show_messages(messages)
 
     redirect_to(user_questions_path) and return if messages.success?
-    redirect_to(new_question_path) unless messages.success?
+    redirect_to(new_user_question_path) unless messages.success?
   end
 
   def index
-    @questions = Question.where(user_id: params[:user_id])
+    @questions = Question.where(user_id: params[:user_id]).paginate(page: params[:page])
   end
 
   def update
@@ -57,7 +57,7 @@ class QuestionsController < ApplicationController
 
     show_messages(messages)
 
-    redirect_to(question_path(id: params[:id]))
+    redirect_to(user_question_path(id: params[:id], user_id: current_user.id))
   end
 
   private

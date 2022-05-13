@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   end
 
   def about
-    @questions = [Question.find_by(views: Question.maximum("views"))]
+    @questions = Question.where(views: Question.maximum("views")).paginate(page: params[:page])
     @user = User.first
   end
 end
