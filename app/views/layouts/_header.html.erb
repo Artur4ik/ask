@@ -2,9 +2,9 @@
       <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li><%=link_to t('application.main_page'), user_signed_in? ? users_path : root_path, class: "nav-link px-2 text-white"%></li>
+            <li><%=link_to t('application.main_page'), home_path(stay: :true), class: "nav-link px-2 text-white"%></li>
             <%if user_signed_in? %>
-            <li><%=link_to t('application.my_feed'), user_feed_path, class: "nav-link px-2 text-white"%></li>
+            <li><%=link_to t('relation.feed'), user_feed_path, class: "nav-link px-2 text-white"%></li>
             <li><%=link_to t('application.add_question'), new_user_question_path(user_id: current_user.id), class: "nav-link px-2 text-white"%></li>
             <%end %>
             <li><%=link_to t('application.about'), about_path, class: "nav-link px-2 text-white"%></li>
@@ -12,7 +12,7 @@
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li><%=button_to t('application.logo'), home_path, method: :get, params: {stay: true}, class: "btn btn-warning"%></li>
           </ul>
-          <%=link_to t('application.change_language'), lang_path, class: "nav-link px-2 text-white"%>
+
           <div class="text-end">
             <%if user_signed_in? %>
 
@@ -31,6 +31,18 @@
               </table>
             <%end %>
           </div>
+          &nbsp;&nbsp;
+          <div class="btn-group">
+            <button type="button" class="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              <%=Emoji.find_by_alias(locale_for_emoji(I18n.locale)).raw%>&nbsp;<%=locale_to_string(I18n.locale)%>
+            </button>
+            <ul class="dropdown-menu">
+              <li><%=link_to("#{Emoji.find_by_alias('ru').raw} #{locale_to_string(:ru)}", root_path(locale: :ru), class: "dropdown-item")%></li>
+              <li><%=link_to("#{Emoji.find_by_alias('us').raw} #{locale_to_string(:en)}", root_path(locale: :en), class: "dropdown-item")%></li>
+            </ul>
+          </div>
+
+
         </div>
       </div>
 </header>

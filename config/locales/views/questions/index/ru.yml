@@ -17,3 +17,5 @@ ru:
     answer_body_empty: "Ответ не может быть пустым"
     question_input: "Введите ваш вопрос"
     answer_input: "Введите ваш ответ"
+    common_feed: "Общая лента"
+    my_profile: "Мой профиль"

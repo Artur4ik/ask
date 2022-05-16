@@ -17,3 +17,5 @@ en:
     answer_body_empty: "Reply should be not empty"
     question_input: "Write your question"
     answer_input: "Write your answer"
+    common_feed: "Common feed"
+    my_profile: "My profile"

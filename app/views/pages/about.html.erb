@@ -28,15 +28,18 @@
   </div>
 </div>
 <br><br><br>
+<%if User.any?%>
 <h2 align="center"><%=t('about.most_popular_user')%></h2><br><br>
 <div align="center">
 <%=image_tag(@user.avatar_url, width: 128, height: 128, class: "rounded-circle")%>
 <h4><%=link_to(@user.name, user_questions_path(user_id: @user.id))%></h4>
 <span class="badge bg-warning text-dark"><%=t('about.questions').capitalize%>: <%=Question.where(user_id: @user.id).count%></span>&nbsp;&nbsp;<span class="badge bg-warning text-dark"><%=t('about.answers').capitalize%>: <%=Answer.where(user_id: @user.id).count%></span>&nbsp;&nbsp;<span class="badge bg-warning text-dark"><%=t('about.likes').capitalize%>: <%=Like.where(user_id: @user.id).count%></span>
 </div>
-
+<%end%>
 <br><br><br>
+<%if Question.any?%>
 <h2 align="center"><%=t('about.most_popular_question')%></h2><br>
 <div align="center">
 <%=render 'questions/show_questions'%>
 </div>
+<%end%>
