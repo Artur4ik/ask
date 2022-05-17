@@ -1,0 +1,10 @@
+<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+  <input type="radio" class="btn-check" name="nav-menu-btn" id="my_profile" autocomplete="off"<%=' checked="1"' if (checked_button == :my_profile)%>>
+  <%=link_to(t('questions.my_profile'), user_questions_path(user_id: current_user.id), class: "btn btn-outline-primary", for: "my_profile")%>
+
+  <input type="radio" class="btn-check" name="nav-menu-btn" id="my_feed" autocomplete="off"<%=' checked="1"' if (checked_button == :my_feed)%>>
+  <%=link_to(t('application.my_feed'), user_feed_path, class: "btn btn-outline-primary", for: "my_feed")%>
+
+  <input type="radio" class="btn-check" name="nav-menu-btn" id="common_feed" autocomplete="off"<%=' checked="1"' if (checked_button == :common_feed)%>>
+  <%=link_to(t('questions.common_feed'), users_path, class: "btn btn-outline-primary", for: "common_feed")%>
+</div>

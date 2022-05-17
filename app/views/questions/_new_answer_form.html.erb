@@ -1,22 +1,27 @@
 <details>
-  <summary><strong><%="#{t('questions.add_new_answer')}"%></strong></summary>
+  <summary><strong><%=t('questions.add_new_answer')%></strong></summary>
   <table>
-  <tr>
-  <td>
-  <%=form_for(:answer, url: user_question_path(id: @question.id, user_id: @question.user.id), method: :put) do |form|%>
-    <p><h3><%= image_tag(current_user.avatar_url, width: 26, height: 26, class: "rounded-circle")%>&nbsp;<%=current_user.name%>:</h3></p>
-    <p><%=form.text_area :body, text: "", placeholder: t('questions.answer_input'), :cols => 50, :rows => 12, class:"form-control"%></p>
-       <%=form.hidden_field :user_id, value: current_user.id %>
-    <p><%=form.submit t('questions.answer'), class: "btn btn-warning"%></p>
-  <% end %>
-  <td>&nbsp;&nbsp;&nbsp;</td>
-  <td>
-  <details>
-  <summary><%=image_tag("happy.png")%></summary>
-    <div class="pickerContainer" target="answer_body"></div>
-  </details>
-  </td>
-  </tr>
-</table>
+    <tr>
+    <td>
+      <%= form_for(:answer, url: user_question_path(id: @question.id, user_id: @question.user.id), method: :put) do |form| %>
+      <p><h3><%= image_tag(current_user.avatar_url, width: 26, height: 26, class: "rounded-circle")%>&nbsp;<%=current_user.name%>:</h3></p>
+      <p><%=form.text_area :body, value: "", placeholder: t('questions.answer_input'), :cols => 50, :rows => 12, class:"form-control"%></p>
+        <%=form.hidden_field :user_id, value: current_user.id %>
+      <p><%=form.submit t('questions.answer'), class: "btn btn-warning"%></p>
+      <% end %>
+    </td>
+    <td>&nbsp;&nbsp;&nbsp;</td>
+    <td>
+      <p>
+        <a class="btn btn-outline-warning" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+          <%=image_tag("happy.png")%>
+        </a>
+      </p>
+      <div class="collapse" id="collapseExample">
+        <div class="pickerContainer" target="answer_body">
+        </div>
+      </div>
+    </td>
+    </tr>
+  </table>
 </details>
-<hr>

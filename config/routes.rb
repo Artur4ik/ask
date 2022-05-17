@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     end
     resources :relationships, only: [:create, :destroy]
     get '/user/feed', to: "users#feed"
+    get '/user/info', to: "users#info"
     get '/home', to: "pages#home"
     get '/about', to: "pages#about"
     post '/likes', to: 'likes#create'
