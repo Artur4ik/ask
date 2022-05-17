@@ -42,6 +42,7 @@ $("#user-email").focusout(function() {
   var url_path = $(this).data("url-path");
   var params = {email: $(this).val()};
   $("#loading").removeAttr("hidden");
+  $("#loading").show(300);
   $.ajax({
     url: url_path,
     type: "get",
@@ -53,14 +54,14 @@ $("#user-email").focusout(function() {
       {
         $("#user-avatar").attr("src", default_avatar);
         $("#user-name").text("");
-        $("#loading").attr("hidden", "");
+        $("#loading").hide(300);
       }
       else
       {
         $("#user-avatar").attr("src", data.avatar_url);
         $("#user-name").text(data.name);
-        $(".field-email").attr("hidden", "")
-        $("#loading").attr("hidden", "");
+        $(".field-email").hide(300);
+        $("#loading").hide(300);
       }
     },
     error: function(data) {}
