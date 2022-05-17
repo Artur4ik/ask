@@ -41,6 +41,7 @@ var default_avatar = $("#user-avatar").attr("src");
 $("#user-email").focusout(function() {
   var url_path = $(this).data("url-path");
   var params = {email: $(this).val()};
+  $("#loading").removeAttr("hidden");
   $.ajax({
     url: url_path,
     type: "get",
@@ -52,11 +53,14 @@ $("#user-email").focusout(function() {
       {
         $("#user-avatar").attr("src", default_avatar);
         $("#user-name").text("");
+        $("#loading").attr("hidden", "");
       }
       else
       {
         $("#user-avatar").attr("src", data.avatar_url);
         $("#user-name").text(data.name);
+        $(".field-email").attr("hidden", "")
+        $("#loading").attr("hidden", "");
       }
     },
     error: function(data) {}
