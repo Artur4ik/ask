@@ -12,3 +12,5 @@ ru:
     language_notice: "Ваша страна и язык определены автоматически по IP адресу"
     my_feed: "Моя лента"
     about: "О нас"
+    root_en: "English"
+    root_ru: "Русский"

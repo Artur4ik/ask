@@ -1,9 +1,15 @@
 class QuestionsController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :check_user_signed_in, only: [:new, :create, :update, :edit, :destroy]
   before_action :create_questions_handler
+
 
   def create_questions_handler
     @questions_handler = Handlers::QuestionsHandler.new
+  end
+
+  def new
+
   end
 
   def create
@@ -61,6 +67,10 @@ class QuestionsController < ApplicationController
   end
 
   private
+
+  def check_user_signed_in
+    redirect_to(new_user_session_path) unless user_signed_in?
+  end
 
   def show_messages(message_hash)
     message_hash.each do |message, alert|
