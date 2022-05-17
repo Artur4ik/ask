@@ -7,7 +7,7 @@ class LikesController < ApplicationController
   end
 
   def create
-    render(json: "Error") if (params['user_id'].to_i != current_user.id)
+    render(json: "Error") and return if (!user_signed_in? || (params['user_id'].to_i != current_user.id))
     render(json: @likes_handler.perform)
   end
 

@@ -6,10 +6,10 @@
   <%=image_tag("user.png", class: "rounded-circle", align: "top", id: "user-avatar", width: 120, height: 120)%>
   <h4 align="center" id="user-name"><br></h4>
 </div>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %><br>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field" style="width: 300px;">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", id: "user-email", class:"form-control", data: {url_path: user_info_path}%>
+    <%= f.email_field :email, autocomplete: "email", id: "user-email", class:"form-control", data: {url_path: user_info_path}%>
     <p></p>
   </div>
 
