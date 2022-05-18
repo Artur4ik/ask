@@ -35,3 +35,36 @@ $(".like-btn").click(function() {
   });
 
 });
+
+var default_avatar = $("#user-avatar").attr("src");
+
+$("#user-email").focusout(function() {
+  var url_path = $(this).data("url-path");
+  var params = {email: $(this).val()};
+  $("#loading").removeAttr("hidden");
+  $("#loading").show(300);
+  $.ajax({
+    url: url_path,
+    type: "get",
+    data: params,
+    dataType: "json",
+    success: function(data) {
+      console.log(data);
+      if(data == null)
+      {
+        $("#user-avatar").attr("src", default_avatar);
+        $("#user-name").text("");
+        $("#loading").hide(300);
+      }
+      else
+      {
+        $("#user-avatar").attr("src", data.avatar_url);
+        $("#user-name").text(data.name);
+        $(".field-email").hide(300);
+        $("#loading").hide(300);
+      }
+    },
+    error: function(data) {}
+  });
+
+});

@@ -1,13 +1,4 @@
-<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-  <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
-  <%=link_to(t('questions.my_profile'), user_questions_path(user_id: current_user.id), class: "btn btn-outline-primary", for: "btnradio1")%>
-
-  <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked>
-  <%=link_to(t('application.my_feed'), user_feed_path, class: "btn btn-outline-primary", for: "btnradio2")%>
-
-  <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-  <%=link_to(t('questions.common_feed'), users_path, class: "btn btn-outline-primary", for: "btnradio3")%>
-</div>
+<%=render partial: 'users/show_navigation_menu', locals: {checked_button: :my_feed}%>
 
 <%if (user_signed_in? && (current_user.following.count == 0))%>
 <hr>

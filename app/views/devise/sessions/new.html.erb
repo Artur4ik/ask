@@ -1,12 +1,19 @@
 <hr>
 <h2><%="#{t('devise.login_form.autorization')}"%></h2><br>
-<%=image_tag("user.png", class: "rounded-circle")%>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %><br>
-  <div class="field" style="width: 300px;">
+<div style="width: 300px;">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <%=image_tag("user.png", class: "rounded-circle", id: "user-avatar", width: 120, height: 120)%>
+  <div class="spinner-border text-primary" id="loading" role="status" hidden></div>
+  <h4 align="center" id="user-name"></h4>
+</div>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field-email" style="width: 300px;">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control"%>
+    <%= f.email_field :email, autocomplete: "email", id: "user-email", class:"form-control", data: {url_path: user_info_path}%>
     <p></p>
   </div>
+
 
   <div class="field" style="width: 300px;">
     <%= f.label :password %><br />

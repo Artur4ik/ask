@@ -19,4 +19,12 @@ class UsersController < ApplicationController
     @questions = Question.all.paginate(page: params[:page])
     @users = User.all
   end
+
+  def info
+    render json: User.find_by(email: params[:email])
+  end
+
+  def show
+
+  end
 end

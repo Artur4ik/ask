@@ -1,6 +1,5 @@
+<%=render partial: 'users/show_navigation_menu', locals: {checked_button: (user_signed_in? && (current_user.id == params[:user_id].to_i)) ? :my_profile : nil}%>
 <%=render 'questions/show_user_info'%>
-<%=render 'questions/show_subscribe_buttons'%>
+<%=render partial: 'questions/show_subscribe_buttons', locals: {follower_button_type: "outline-primary", following_button_type: "primary"}%>
 <hr><h3><%=t('relation.user_following')%>:</h3>
 <%=render 'users/show_followers'%>
-
-<%=button_to "#{t('application.main_page')}", user_questions_path, method: :get, class: "btn btn-warning"%>
