@@ -25,18 +25,30 @@
 <hr>
 <% if (@question.answers.count != 0) %>
   <%@question.answers.each do |answer|%>
+  <div class="content" id=<%="t-A#{answer.id}"%>>
   <table>
   <tr>
     <td><a href=<%=user_questions_path(user_id: answer.user.id, locale: I18n.locale)%>><%= image_tag(answer.user.avatar_url, width: 80, height: 80, class: "rounded-circle")%></a></td>
     <td>&nbsp;</td>
-    <td><h3><%=link_to(answer.user.name, user_questions_path(user_id: answer.user.id, locale: I18n.locale))%></h3><%=answer.body%><a align="left">
+    <td><h3><%=link_to(answer.user.name, user_questions_path(user_id: answer.user.id, locale: I18n.locale))%>
+
+    <%if(current_user.id == answer.user.id)%>
+    <%=content_tag(:div, class: "btn-group", role: "group") do%>
+      <button type="button" class="btn btn-outline-primary btn-sm" id="show-ce" data-id=<%="#ce-A#{answer.id}"%>>Изменить</button>
+      <button type="button" class="btn btn-outline-danger btn-sm" id="delete-c" data-id=<%="#t-A#{answer.id}"%> data-url-path=<%=answer_path(id: answer.id)%>>Удалить</button>
+    <%end%>
+    <%end%>
+    </h3>
+    <a id=<%="A#{answer.id}"%>><%=answer.body%></a><a align="left">
     <br><%=answer.updated_at.strftime("%d.%m.%Y, %H:%M")%>
     <br><font size="4">
     <%@answer = answer%>
     <%=render 'likes/show_answer_likes'%>
+    <%=render partial: 'questions/edit_content_form', locals: {id: answer.id, user_id: answer.user_id, body: answer.body, content_type: "A", url_path: answer_path(id: answer.id)}%>
     </font></a></td>
   </tr>
   </table>
   <hr>
+  </div>
   <% end %>
 <% end %>
