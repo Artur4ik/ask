@@ -2,4 +2,4 @@
 
 <%=render 'questions/show_question_and_answers'%>
 
-<%=render 'questions/new_answer_form' if user_signed_in? %>
+<%=render partial: 'questions/new_answer_form', locals: {question_id: params[:id]} if user_signed_in? %>

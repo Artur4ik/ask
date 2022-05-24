@@ -19,3 +19,6 @@ en:
     answer_input: "Write your answer"
     common_feed: "Common feed"
     my_profile: "My profile"
+    edit: "Edit"
+    delete: "Destroy"
+    save: "Save"

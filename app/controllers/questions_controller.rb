@@ -27,13 +27,13 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    messages = @questions_handler.add_answer(params[:answer][:body],
-                                             params[:answer][:user_id],
-                                             params[:id])
-
-    show_messages(messages)
-
-    redirect_to(user_question_path(id: params[:id], user_id: params[:answer][:user_id]))
+    question = Question.find(params[:id])
+    if(question.valid? && (current_user.id == question.user_id))
+      question.update_attribute(:body, params[:body])
+      render(json: question)
+    else
+      render(json: {data: "Error: answer not valid"})
+    end
   end
 
   def show
