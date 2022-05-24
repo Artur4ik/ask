@@ -1,12 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe "Likes", type: :request do
-  fixtures :all
-
   before do
-    @user = users(:tom)
-    @test_question = questions(:test_question)
-    @test_anwer = answers(:test_answer)
+    @user = FactoryBot.create(:user, name: "Tom")
+    @test_question = FactoryBot.create(:question, body: "Test body", user_id: @user.id)
+    @test_answer = FactoryBot.create(:answer, body: "Test body", user_id: @user.id, question_id: @test_question.id)
     @like_params = {target_id: 1, target_type: "Q", user_id: @user.id, emoji: Emoji.find_by_alias('hankey').name}
   end
 

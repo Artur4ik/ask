@@ -1,11 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe "Users", type: :request do
-  fixtures :all
-
   context "sign in user" do
     before do
-      @user = users(:tom)
+      @user = FactoryBot.create(:user, name: "Tom")
       sign_in(@user)
     end
 
@@ -32,7 +30,7 @@ RSpec.describe "Users", type: :request do
 
   context "sign out user" do
     before do
-      @user = users(:tom)
+      @user = FactoryBot.create(:user, name: "Tom")
     end
 
     it "can not see feed" do

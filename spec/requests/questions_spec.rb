@@ -1,12 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe "Questions", type: :request do
-  fixtures :all
-
   before do
-    @user = users(:tom)
-    @other_user = users(:foobar)
-    @test_question = questions(:test_question)
+    @user = FactoryBot.create(:user, name: "Tom")
+    @other_user = FactoryBot.create(:user, name: "Ben")
+    @test_question = FactoryBot.create(:question, body: "Test body", user_id: @user.id)
   end
 
   context "sign in user" do
@@ -33,7 +31,7 @@ RSpec.describe "Questions", type: :request do
 
     it "can create new answer" do
       expect {
-        put(user_question_path(user_id: @user.id, id: @test_question), params: {answer: {body: "test answer", user_id: @user.id, question_id: @test_question.id}})
+        post(answers_path, params: {answer: {body: "test answer", user_id: @user.id, question_id: @test_question.id}})
         }.to change { Answer.count }
     end
 
