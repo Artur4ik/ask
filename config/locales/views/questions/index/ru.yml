@@ -19,3 +19,6 @@ ru:
     answer_input: "Введите ваш ответ"
     common_feed: "Общая лента"
     my_profile: "Мой профиль"
+    edit: "Изменить"
+    delete: "Удалить"
+    save: "Сохранить"

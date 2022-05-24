@@ -9,7 +9,7 @@ import "controllers"
 import { createPicker } from 'picmo';
 
 
-$(".ce").hide();
+//$(".ce").hide();
 
 const rootEl = document.querySelector('.pickerContainer');
 
@@ -72,16 +72,15 @@ $("#user-email").focusout(function() {
 
 });
 
-$(".btn btn-outline-primary btn-sm, #show-ce").click(function() {
+$(".btn.show-ce").click(function() {
   $($(this).data("id")).toggle(300);
 });
 
-$(".btn btn-outline-primary btn-sm, #cu").click(function() {
+$(".btn.cu").click(function() {
   var edit_form_selector = "#ce-form-" + $(this).data("content-type") + $(this).data("id");
-  console.log(edit_form_selector);
   var url_path = $(this).data("url-path");
   var params = {body: $(edit_form_selector).val()};
-  var text_selector = "#"+ $(this).data("content-type") + $(this).data("id");
+  var text_selector = $(this).data("content-type") + $(this).data("id");
   $.ajax({
     url: url_path,
     type: "patch",
@@ -90,8 +89,8 @@ $(".btn btn-outline-primary btn-sm, #cu").click(function() {
     success: function(data) {
       if(data != null)
       {
-        $(text_selector).text(data.body);
-        $(".ce").hide(300);
+        $("#"+ text_selector).text(data.body);
+        $("#ce-" + text_selector).hide(300);
       }
     },
     error: function(data) {}
@@ -99,7 +98,7 @@ $(".btn btn-outline-primary btn-sm, #cu").click(function() {
 });
 
 
-$(".btn btn-outline-primary btn-sm, #delete-c").click(function() {
+$(".btn.delete-c").click(function() {
   var form_selector = $(this).data("id");
   var url_path = $(this).data("url-path");
   var params = {};
@@ -107,7 +106,7 @@ $(".btn btn-outline-primary btn-sm, #delete-c").click(function() {
     url: url_path,
     type: "delete",
     data: params,
-    dataType: "html",
+    dataType: "json",
     success: function(data) {
       $(form_selector).hide(300);
     },

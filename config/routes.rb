@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       resources :questions
     end
 
-    resources :answers, only: [:update, :destroy]
+    resources :answers, only: [:create, :update, :destroy]
     resources :relationships, only: [:create, :destroy]
     get '/user/feed', to: "users#feed"
     get '/user/info', to: "users#info"

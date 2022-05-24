@@ -1,6 +1,6 @@
-<%=content_tag(:div, class: "ce", id: "ce-#{content_type}#{id}") do%>
+<%=content_tag(:div, style: "display: none;", class: "ce", id: "ce-#{content_type}#{id}") do%>
 <hr>
-<%=text_area(:answer, :body, id: "ce-form-#{content_type}#{id}", :cols => 50, :rows => 6, class: "form-control")%>
+<%=text_area(content_type, :body, id: "ce-form-#{content_type}#{id}", :cols => 50, :rows => 6, class: "form-control")%>
 <hr>
-<%=button_to("Save", "javascript:void(0)", method: :get, class: "btn btn-outline-primary btn-sm", id: "cu", data: {id: id, user_id: user_id, body: body, content_type: content_type, url_path: url_path})%>
+<%=button_to(t('questions.save'), "javascript:void(0)", method: :get, class: "btn btn-outline-primary btn-sm cu", data: {id: id, user_id: user_id, body: body, content_type: content_type, url_path: url_path})%>
 <%end%>
