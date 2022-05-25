@@ -4,21 +4,19 @@
     <title><%=t('application.logo')%> - <%=t('application.motto')%></title>
     <%= javascript_importmap_tags %>
     <%= favicon_link_tag 'favicon.ico' %>
-    <%= render 'layouts/header'%>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
+  <body background=<%=image_path("background.png")%>>
+  <%= render 'layouts/header'%>
     <div class="container"><br>
       <% flash.each do |message_type, message| %>
       <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
       <% end %>
     <%= yield %>
     <br><br><br><br>
-  </div>
-
-  <body background=<%=image_path("background.png")%>>
-      <%= render 'layouts/footer'%>
+    </div>
+    <%= render 'layouts/footer'%>
   </body>
 </html>
