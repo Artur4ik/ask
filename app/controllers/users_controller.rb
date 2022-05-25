@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
   def index
     @questions = Question.all.paginate(page: params[:page])
-    @users = User.all
+    @users = User.last(4)
   end
 
   def info
