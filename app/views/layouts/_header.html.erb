@@ -26,10 +26,18 @@
               <%else %>
               <table>
                 <tr>
-                  <td><%=button_to "#{t('application.log_in')}", new_user_session_path, method: :get, class: "btn btn-outline-light me-2"%></td>
+                  <td>
+                  <button type="button" class="btn btn-outline-light" data-bs-toggle="dropdown" aria-expanded="false">
+                    <%=t('application.log_in')%>
+                  </button>
+                  <div class="dropdown-menu login-form">
+                    <%=render "devise/sessions/new_session_form"%>
+                  </div></td>
+                  <td>&nbsp;</td>
                   <td><%=button_to "#{t('application.sign_up')}", new_user_registration_path, method: :get, class: "btn btn-warning"%></td>
                 </tr>
               </table>
+
             <%end %>
           </div>
           &nbsp;&nbsp;

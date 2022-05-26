@@ -16,6 +16,66 @@
 
  @import "bootstrap";
 
- A {
+ a {
+  transition: 0.3s;
   text-decoration: none;
  }
+ a:hover {
+  transition: 0.3s;
+  color: orange;
+}
+
+.rounded-circle {
+  transition: 0.3s;
+ }
+ .rounded-circle:hover {
+  transition: 0.3s;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3); /* Параметры тени */
+ }
+
+ .card-body.home {
+  box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.27);
+ }
+ .card.h-100
+ {
+  box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.27);
+  background-color: transparent
+ }
+ .dropdown-menu.login-form {
+   padding: 15px;
+   box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.27);
+   background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+ }
+ .card-body.home {
+  background-color: transparent;
+ }
+
+ .card {
+  background-color: transparent;
+ }
+
+ .col-sm-6 {
+  background-color: transparent;
+ }
+
+ .row {
+  background-color: transparent;
+ }
+
+ body {
+  min-height: 100vh;
+  background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+ }
+ .img-logo{
+  display: inline-block;
+  filter: drop-shadow(0 0 5px #555);
+  overflow: hidden; /* Скрываем всё за контуром */
+}
+.img-logo {
+  transition: 1s; /* Время эффекта */
+  display: block;
+}
+.img-logo:hover {
+  cursor: pointer;
+  transform: scale(1.2); /* Увеличиваем масштаб */
+}

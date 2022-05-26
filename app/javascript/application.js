@@ -113,3 +113,7 @@ $(".btn.delete-c").click(function() {
     error: function(data) {}
   });
 });
+
+$(".img-logo").click(function() {
+  $("#quote-card").toggle(500);
+});

@@ -17,7 +17,7 @@
         <%end%>
       <%end%>
 
-      &nbsp;<%=link_to(image_tag("delete.png"), user_question_path(id: @question.id, user_id: @question.user.id), data: {method: :delete}) if (user_signed_in? && (@question.user.id == current_user.id))%>
+      &nbsp;<%=link_to(image_tag("delete.png"), user_question_path(id: @question.id, user_id: @question.user.id), title: t('questions.delete'), data: {method: :delete}) if (user_signed_in? && (@question.user.id == current_user.id))%>
 
       </h3>
       <a id=<%="question#{@question.id}"%>><%= @question.body %></a>
@@ -57,7 +57,8 @@
     </font></a></td>
   </tr>
   </table>
-  <hr>
   </div>
+  <hr>
   <% end %>
+
 <% end %>
