@@ -5,6 +5,6 @@ class PagesController < ApplicationController
 
   def about
     @questions = Question.where(views: Question.maximum("views")).paginate(page: params[:page])
-    @user = User.first
+    @user = User.find(rand(1..User.count))
   end
 end
