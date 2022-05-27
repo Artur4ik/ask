@@ -1,0 +1,33 @@
+<div style="width: 300px;">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <%=image_tag("user.png", class: "rounded-circle", id: "user-avatar", width: 120, height: 120)%>
+  <div class="spinner-border text-primary" id="loading" role="status" hidden></div>
+  <h4 align="center" id="user-name"></h4>
+</div>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field-email" style="width: 300px;">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autocomplete: "email", id: "user-email", class:"form-control", data: {url_path: user_info_path}%>
+    <p></p>
+  </div>
+
+
+  <div class="field" style="width: 300px;">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "current-password", class:"form-control" %>
+    <p></p>
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="field">
+      <%= f.check_box :remember_me, class: "form-check-input" %>
+      <%= f.label :remember_me %>
+    </div>
+    <p></p>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit t('application.log_in'), class: "btn btn-warning"%>
+  </div>
+<% end %>

@@ -1,4 +1,4 @@
-<hr>
+<div class="main-content" id=<%="t-question#{@question.id}"%>>
 <table>
   <tr>
     <td><a href=<%=user_questions_path(user_id: @question.user.id)%>><%= image_tag(@question.user.avatar_url, width: 80, height: 80, class: "rounded-circle")%></a></td>
@@ -17,7 +17,7 @@
         <%end%>
       <%end%>
 
-      &nbsp;<%=link_to(image_tag("delete.png"), user_question_path(id: @question.id, user_id: @question.user.id), data: {method: :delete}) if (user_signed_in? && (@question.user.id == current_user.id))%>
+      &nbsp;<%=link_to(image_tag("delete.png"), user_question_path(id: @question.id, user_id: @question.user.id), title: t('questions.delete'), data: {method: :delete}) if (user_signed_in? && (@question.user.id == current_user.id))%>
 
       </h3>
       <a id=<%="question#{@question.id}"%>><%= @question.body %></a>
@@ -31,7 +31,7 @@
       </a></td>
   </tr>
 </table>
-<hr>
+</div>
 <% if (@question.answers.count != 0) %>
   <%@question.answers.each do |answer|%>
   <div class="content" id=<%="t-answer#{answer.id}"%>>
@@ -57,7 +57,8 @@
     </font></a></td>
   </tr>
   </table>
-  <hr>
   </div>
+
   <% end %>
+
 <% end %>

@@ -3,11 +3,11 @@
 end
 
 100.times do
-  Question.create(user_id: rand(1..User.count), body: Faker::Lorem.sentence, solved: [true, false].sample)
+  Question.create(user_id:  User.all.sample.id, body: Faker::Lorem.sentence, solved: [true, false].sample)
 end
 
-500.times do
-  Answer.create(user_id: rand(1..User.count), question_id: rand(1..Question.count), body: Faker::Lorem.sentence)
+1000.times do
+  Answer.create(user_id:  User.all.sample.id, question_id: Question.all.sample.id, body: Faker::Lorem.sentence)
 end
 
 2000.times do
@@ -16,10 +16,10 @@ end
   case rand(1..2)
   when 1
     target = "Q"
-    id = Question.count
+    id = Question.all.sample.id
   when 2
     target = "A"
-    id = Answer.count
+    id = Answer.all.sample.id
   end
 
   emoji = case rand(1..2)
@@ -28,5 +28,5 @@ end
   when 2
     Emoji.find_by_alias('hankey').name
   end
-  Like.create(user_id: rand(1..User.count), target_id: rand(1..id), target_type: target, emoji: Emoji.find_by_alias(emoji).name)
+  Like.create(user_id:  User.all.sample.id, target_id: id, target_type: target, emoji: Emoji.find_by_alias(emoji).name)
 end

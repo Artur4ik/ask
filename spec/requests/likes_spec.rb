@@ -5,7 +5,7 @@ RSpec.describe "Likes", type: :request do
     @user = FactoryBot.create(:user, name: "Tom")
     @test_question = FactoryBot.create(:question, body: "Test body", user_id: @user.id)
     @test_answer = FactoryBot.create(:answer, body: "Test body", user_id: @user.id, question_id: @test_question.id)
-    @like_params = {target_id: 1, target_type: "Q", user_id: @user.id, emoji: Emoji.find_by_alias('hankey').name}
+    @like_params = {target_id: @test_question.id, target_type: "Q", user_id: @user.id, emoji: Emoji.find_by_alias('hankey').name}
   end
 
   context "sign in user" do
@@ -15,17 +15,16 @@ RSpec.describe "Likes", type: :request do
 
     it "can create like on question" do
       @like_params[:target_type] = "Q"
-
       expect {
-        post(likes_path(@like_params))
+        post(likes_path, params: @like_params)
         }.to change { Like.count }
     end
 
     it "can create like on answer" do
       @like_params[:target_type] = "A"
-
+      @like_params[:target_id] = @test_answer.id
       expect {
-        post(likes_path(@like_params))
+        post(likes_path, params: @like_params)
         }.to change { Like.count }
     end
 
@@ -33,7 +32,7 @@ RSpec.describe "Likes", type: :request do
       @like_params[:target_id] = "fOoBaR"
 
       expect {
-        post(likes_path(@like_params))
+        post(likes_path, params: @like_params)
         }.not_to change { Like.count }
     end
 
@@ -41,7 +40,7 @@ RSpec.describe "Likes", type: :request do
       @like_params[:target_type] = "fOoBaR"
 
       expect {
-        post(likes_path(@like_params))
+        post(likes_path, params: @like_params)
         }.not_to change { Like.count }
     end
 
@@ -49,7 +48,7 @@ RSpec.describe "Likes", type: :request do
       @like_params[:user_id] = "fOoBaR"
 
       expect {
-        post(likes_path(@like_params))
+        post(likes_path, params: @like_params)
         }.not_to change { Like.count }
     end
   end
@@ -57,7 +56,7 @@ RSpec.describe "Likes", type: :request do
   context "sign out user" do
     it "can not create like" do
       expect {
-        post(likes_path(@like_params))
+        post(likes_path, params: @like_params)
         }.not_to change { Like.count }
     end
   end

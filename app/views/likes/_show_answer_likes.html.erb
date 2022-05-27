@@ -1,4 +1,4 @@
-
+<span class="likes-container">
 <%@count = Like.where(target_id: @answer.id, target_type: "A", emoji: Emoji.find_by_alias('thumbsup').name).count%>
 
 <%=user_signed_in? ? link_to("#{@count} " + Emoji.find_by_alias('thumbsup').raw, "javascript:void(0)", id: "#{@answer.id}", class: "like-btn", data: { user_id: current_user.id, target_id: @answer.id, target_type: "A", emoji: Emoji.find_by_alias('thumbsup').name, url_path: likes_path, method: :post}) : "#{@count} #{Emoji.find_by_alias('thumbsup').raw}"%>
@@ -7,3 +7,4 @@
 <%@count = Like.where(target_id: @answer.id, target_type: "A", emoji: Emoji.find_by_alias('hankey').name).count%>
 
 <%=user_signed_in? ? link_to("#{@count} #{Emoji.find_by_alias('hankey').raw}", "javascript:void(0)", id: "#{@answer.id}", class: "like-btn", data: { user_id: current_user.id, target_id: @answer.id, target_type: "A", emoji: Emoji.find_by_alias('hankey').name, url_path: likes_path, method: :post}): "#{@count} #{Emoji.find_by_alias('hankey').raw}"%>
+</span>
