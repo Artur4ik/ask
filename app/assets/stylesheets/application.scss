@@ -15,6 +15,39 @@
  */
 
  @import "bootstrap";
+ .aside-menu {
+  @media (min-width: 1700px) {
+    display:inline;
+  }
+   display: none;
+   overflow: visible;
+   position: fixed;
+   margin: 20px;
+   right: 100px;
+   width: 80px;
+   height: 80px;
+   border: 1px solid rgb(192, 192, 192);
+   border-radius: 100px;
+   transition: 0.3s;
+   box-shadow: 0px 0px 10px 0px rgba(34, 60, 80, 0.27);
+   background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+ }
+ .aside-menu.one {
+  top: 150px;
+ }
+ .aside-menu.two {
+  top: 250px;
+ }
+ .aside-menu:hover {
+  transition: 0.3s;
+  cursor: pointer;
+  background-image: linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%);
+  box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.27);
+  transform: scale(1.1);
+ }
+ .new-post-img {
+   margin: 19px;
+ }
 
  a {
   transition: 0.3s;
@@ -24,12 +57,16 @@
   transition: 0.3s;
   color: orange;
 }
+  .btn-group#nav-menu {
+    padding-left: 5px;
+  }
 
-.rounded-circle {
+ .rounded-circle {
   transition: 0.3s;
  }
  .rounded-circle:hover {
   transition: 0.3s;
+  transform: scale(1.1);
   box-shadow: 0 0 10px rgba(0,0,0,0.3); /* Параметры тени */
  }
  .content {
@@ -37,10 +74,14 @@
   padding: 10px;
   margin: 5px;
   border: 1px solid rgb(192, 192, 192);
-  min-width: 49%;
+  min-width: 99%;
+  @media (min-width: 1400px) {
+    min-width: 49%;
+  }
   transition: 0.3s;
   border-radius: 10px;
  }
+
  .content:hover {
   transition: 0.3s;
   box-shadow: 0px 0px 10px 0px rgba(34, 60, 80, 0.27);
@@ -50,6 +91,7 @@
  .main-content {
   padding: 10px;
   margin: 15px 5px;
+  min-width: 99%;
   border: 1px solid rgb(192, 192, 192);
   transition: 0.3s;
   border-radius: 10px;
@@ -64,16 +106,19 @@
  .card-body.home {
   box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.27);
  }
+
  .card.h-100
  {
   box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.27);
   background-color: transparent
  }
+
  .dropdown-menu.login-form {
    padding: 15px;
    box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.27);
    background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
  }
+
  .card-body.home {
   background-color: transparent;
  }

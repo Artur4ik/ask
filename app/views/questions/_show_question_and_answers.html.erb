@@ -1,4 +1,4 @@
-<div class="main-content">
+<div class="main-content" id=<%="t-question#{@question.id}"%>>
 <table>
   <tr>
     <td><a href=<%=user_questions_path(user_id: @question.user.id)%>><%= image_tag(@question.user.avatar_url, width: 80, height: 80, class: "rounded-circle")%></a></td>

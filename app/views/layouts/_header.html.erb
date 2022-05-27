@@ -33,14 +33,14 @@
                   <div class="dropdown-menu login-form">
                     <%=render "devise/sessions/new_session_form"%>
                   </div></td>
-                  <td>&nbsp;</td>
+                  <td>&nbsp;&nbsp;&nbsp;</td>
                   <td><%=button_to "#{t('application.sign_up')}", new_user_registration_path, method: :get, class: "btn btn-warning"%></td>
                 </tr>
               </table>
 
             <%end %>
           </div>
-          &nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;
           <div class="btn-group">
             <button type="button" class="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
               <%=Emoji.find_by_alias(locale_for_emoji(I18n.locale)).raw%>&nbsp;<%=locale_to_string(I18n.locale)%>

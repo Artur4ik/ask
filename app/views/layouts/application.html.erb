@@ -10,13 +10,22 @@
   </head>
  <body>
   <%= render 'layouts/header'%>
+</div>
+  <%if user_signed_in?%>
+    <div class="aside-menu one" data-url-path=<%=user_questions_path(user_id: current_user.id)%>>
+    <%=image_tag(current_user.avatar_url, width: "100%", height: "100%", class: "rounded-circle")%>
+    </div>
+  <div class="aside-menu two" data-url-path=<%=new_user_question_path(user_id: current_user.id)%>>
+    <%=image_tag("edit.png", width: 40, height: 40, class: "new-post-img")%>
+  </div>
+  <%end%>
     <div class="container"><br>
       <% flash.each do |message_type, message| %>
       <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
       <% end %>
     <%= yield %>
     <br><br><br><br>
-    </div>
+
   </body>
    <%= render 'layouts/footer'%>
 </html>

@@ -26,13 +26,24 @@ $(".like-btn").click(function() {
   var url_path = $(this).data("url-path");
   var params ={user_id: $(this).data("user-id"), target_id: $(this).data("target-id"), target_type: $(this).data("target-type"), emoji: $(this).data("emoji")};
   var doc = $(this);
-
+  var content_type;
+  var target_id;
+  if($(this).data("target-type") == "Q")
+  {
+    content_type = "question";
+  }
+  if($(this).data("target-type") == "A")
+  {
+    content_type = "answer";
+  }
+  target_id = $(this).data("target-id");
   $.ajax({
     url: url_path,
     type: "post",
     data: params,
     success: function(data) {
       doc.text(($(JSON.parse(JSON.stringify(data))).length).toString() + " " + emoji);
+      //$("#t-"+content_type + target_id).css("box-shadow", "0 0 20px rgb(255, 238, 0)");
     },
     error: function(data) {}
   });
@@ -74,6 +85,10 @@ $("#user-email").focusout(function() {
 
 $(".btn.show-ce").click(function() {
   $($(this).data("id")).toggle(300);
+});
+
+$(".aside-menu").click(function() {
+  window.location.href=$(this).data("url-path");
 });
 
 $(".btn.cu").click(function() {
